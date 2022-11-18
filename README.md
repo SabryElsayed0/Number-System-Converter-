@@ -1,7 +1,7 @@
 # Number-System-Converter-
 
 
-##Overview: 
+## Overview: 
 By using Number System Converter you can convert Binary, Decimal, and Hexadecimal to one another.
 All you have to do is use the keypad to select from
 the different systems  that you want to convert between them.
@@ -11,8 +11,8 @@ Whereas :
 - 3 to select Hexadecimal System.  
 
 
-####Drivers:
+#### Drivers:
 DIO, Keypad, LCD.
 
-######Microcontroller:
+###### Microcontroller:
 ATmega32
