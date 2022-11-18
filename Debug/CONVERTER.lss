@@ -1,0 +1,3761 @@
+
+CONVERTER.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000170c  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000092  00800060  0000170c  000017a0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000008  008000f2  008000f2  00001832  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00001832  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001864  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000148  00000000  00000000  000018a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00002a12  00000000  00000000  000019e8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000b2b  00000000  00000000  000043fa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000013fb  00000000  00000000  00004f25  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000029c  00000000  00000000  00006320  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000006a1  00000000  00000000  000065bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001340  00000000  00000000  00006c5d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000f0  00000000  00000000  00007f9d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+       4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+      50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+      54:	11 24       	eor	r1, r1
+      56:	1f be       	out	0x3f, r1	; 63
+      58:	cf e5       	ldi	r28, 0x5F	; 95
+      5a:	d8 e0       	ldi	r29, 0x08	; 8
+      5c:	de bf       	out	0x3e, r29	; 62
+      5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+      60:	10 e0       	ldi	r17, 0x00	; 0
+      62:	a0 e6       	ldi	r26, 0x60	; 96
+      64:	b0 e0       	ldi	r27, 0x00	; 0
+      66:	ec e0       	ldi	r30, 0x0C	; 12
+      68:	f7 e1       	ldi	r31, 0x17	; 23
+      6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+      6c:	05 90       	lpm	r0, Z+
+      6e:	0d 92       	st	X+, r0
+      70:	a2 3f       	cpi	r26, 0xF2	; 242
+      72:	b1 07       	cpc	r27, r17
+      74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+      76:	20 e0       	ldi	r18, 0x00	; 0
+      78:	a2 ef       	ldi	r26, 0xF2	; 242
+      7a:	b0 e0       	ldi	r27, 0x00	; 0
+      7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+      7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+      80:	aa 3f       	cpi	r26, 0xFA	; 250
+      82:	b2 07       	cpc	r27, r18
+      84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+      86:	0e 94 a7 08 	call	0x114e	; 0x114e <main>
+      8a:	0c 94 84 0b 	jmp	0x1708	; 0x1708 <_exit>
+
+0000008e <__bad_interrupt>:
+      8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <KEYPAD_GetKey>:
+
+/***************************************************************************/
+
+//to detect the desired pressed key on KeyPad
+u8 KEYPAD_GetKey(void)
+{
+      92:	ff 92       	push	r15
+      94:	0f 93       	push	r16
+      96:	1f 93       	push	r17
+      98:	cf 93       	push	r28
+      9a:	df 93       	push	r29
+	
+	//local variable is used inside for loop to detect the desired column
+	u8 c;
+	
+	/**out on all buttons in rows HIGH*/ 
+	DIO_WritePin(FIRST_OUTPUT,HIGH);
+      9c:	61 e0       	ldi	r22, 0x01	; 1
+      9e:	8c e0       	ldi	r24, 0x0C	; 12
+      a0:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(FIRST_OUTPUT+1,HIGH);
+      a4:	61 e0       	ldi	r22, 0x01	; 1
+      a6:	8d e0       	ldi	r24, 0x0D	; 13
+      a8:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(FIRST_OUTPUT+2,HIGH);
+      ac:	61 e0       	ldi	r22, 0x01	; 1
+      ae:	8e e0       	ldi	r24, 0x0E	; 14
+      b0:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(FIRST_OUTPUT+3,HIGH);
+      b4:	61 e0       	ldi	r22, 0x01	; 1
+      b6:	8f e0       	ldi	r24, 0x0F	; 15
+      b8:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	
+	/**loop on all each row and detect any button in columns is pressed*/ 
+	for(r=0;r<ROWS;r++)
+      bc:	10 e0       	ldi	r17, 0x00	; 0
+
+//to detect the desired pressed key on KeyPad
+u8 KEYPAD_GetKey(void)
+{
+	//Local variable to store the value of the pressed key
+	u8 Key=NO_KEY;
+      be:	0f 2e       	mov	r0, r31
+      c0:	fe e4       	ldi	r31, 0x4E	; 78
+      c2:	ff 2e       	mov	r15, r31
+      c4:	f0 2d       	mov	r31, r0
+	DIO_WritePin(FIRST_OUTPUT+1,HIGH);
+	DIO_WritePin(FIRST_OUTPUT+2,HIGH);
+	DIO_WritePin(FIRST_OUTPUT+3,HIGH);
+	
+	/**loop on all each row and detect any button in columns is pressed*/ 
+	for(r=0;r<ROWS;r++)
+      c6:	27 c0       	rjmp	.+78     	; 0x116 <KEYPAD_GetKey+0x84>
+	{
+		DIO_WritePin(FIRST_OUTPUT+r,LOW);
+      c8:	0c e0       	ldi	r16, 0x0C	; 12
+      ca:	01 0f       	add	r16, r17
+      cc:	60 e0       	ldi	r22, 0x00	; 0
+      ce:	80 2f       	mov	r24, r16
+      d0:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+		for(c=0;c<COLS;c++)
+      d4:	d0 e0       	ldi	r29, 0x00	; 0
+      d6:	18 c0       	rjmp	.+48     	; 0x108 <KEYPAD_GetKey+0x76>
+		{
+			
+			if(DIO_ReadPin(FIRST_INPUT+c)==LOW)
+      d8:	ca e1       	ldi	r28, 0x1A	; 26
+      da:	cd 0f       	add	r28, r29
+      dc:	8c 2f       	mov	r24, r28
+      de:	0e 94 0b 0b 	call	0x1616	; 0x1616 <DIO_ReadPin>
+      e2:	81 11       	cpse	r24, r1
+      e4:	10 c0       	rjmp	.+32     	; 0x106 <KEYPAD_GetKey+0x74>
+			{
+				
+				Key=kayarrarr[r][c];
+      e6:	e1 2f       	mov	r30, r17
+      e8:	f0 e0       	ldi	r31, 0x00	; 0
+      ea:	ee 0f       	add	r30, r30
+      ec:	ff 1f       	adc	r31, r31
+      ee:	ee 0f       	add	r30, r30
+      f0:	ff 1f       	adc	r31, r31
+      f2:	ef 59       	subi	r30, 0x9F	; 159
+      f4:	ff 4f       	sbci	r31, 0xFF	; 255
+      f6:	ed 0f       	add	r30, r29
+      f8:	f1 1d       	adc	r31, r1
+      fa:	f0 80       	ld	r15, Z
+				while(DIO_ReadPin(FIRST_INPUT+c)==LOW);
+      fc:	8c 2f       	mov	r24, r28
+      fe:	0e 94 0b 0b 	call	0x1616	; 0x1616 <DIO_ReadPin>
+     102:	88 23       	and	r24, r24
+     104:	d9 f3       	breq	.-10     	; 0xfc <KEYPAD_GetKey+0x6a>
+	
+	/**loop on all each row and detect any button in columns is pressed*/ 
+	for(r=0;r<ROWS;r++)
+	{
+		DIO_WritePin(FIRST_OUTPUT+r,LOW);
+		for(c=0;c<COLS;c++)
+     106:	df 5f       	subi	r29, 0xFF	; 255
+     108:	d4 30       	cpi	r29, 0x04	; 4
+     10a:	30 f3       	brcs	.-52     	; 0xd8 <KEYPAD_GetKey+0x46>
+				
+				Key=kayarrarr[r][c];
+				while(DIO_ReadPin(FIRST_INPUT+c)==LOW);
+			}
+		}
+		DIO_WritePin(FIRST_OUTPUT+r,HIGH);
+     10c:	61 e0       	ldi	r22, 0x01	; 1
+     10e:	80 2f       	mov	r24, r16
+     110:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(FIRST_OUTPUT+1,HIGH);
+	DIO_WritePin(FIRST_OUTPUT+2,HIGH);
+	DIO_WritePin(FIRST_OUTPUT+3,HIGH);
+	
+	/**loop on all each row and detect any button in columns is pressed*/ 
+	for(r=0;r<ROWS;r++)
+     114:	1f 5f       	subi	r17, 0xFF	; 255
+     116:	14 30       	cpi	r17, 0x04	; 4
+     118:	b8 f2       	brcs	.-82     	; 0xc8 <KEYPAD_GetKey+0x36>
+		DIO_WritePin(FIRST_OUTPUT+r,HIGH);
+
+	}
+	
+	return Key ;
+}
+     11a:	8f 2d       	mov	r24, r15
+     11c:	df 91       	pop	r29
+     11e:	cf 91       	pop	r28
+     120:	1f 91       	pop	r17
+     122:	0f 91       	pop	r16
+     124:	ff 90       	pop	r15
+     126:	08 95       	ret
+
+00000128 <LCD_WriteCommand>:
+/*checking if we use 8 bit with LCD*/
+#elif LCD_MODE==_4_BIT
+
+/*this function to transmit command to LCD*/
+static void LCD_WriteCommand(u8 command)
+{
+     128:	cf 93       	push	r28
+     12a:	c8 2f       	mov	r28, r24
+	// to transmit command we should make pin0=0
+	DIO_WritePin(RS,LOW); 
+     12c:	60 e0       	ldi	r22, 0x00	; 0
+     12e:	81 e0       	ldi	r24, 0x01	; 1
+     130:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D7,READ_BIT(command,7));
+     134:	6c 2f       	mov	r22, r28
+     136:	66 1f       	adc	r22, r22
+     138:	66 27       	eor	r22, r22
+     13a:	66 1f       	adc	r22, r22
+     13c:	86 e0       	ldi	r24, 0x06	; 6
+     13e:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D6,READ_BIT(command,6));
+     142:	c6 fb       	bst	r28, 6
+     144:	66 27       	eor	r22, r22
+     146:	60 f9       	bld	r22, 0
+     148:	85 e0       	ldi	r24, 0x05	; 5
+     14a:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D5,READ_BIT(command,5));
+     14e:	c5 fb       	bst	r28, 5
+     150:	66 27       	eor	r22, r22
+     152:	60 f9       	bld	r22, 0
+     154:	84 e0       	ldi	r24, 0x04	; 4
+     156:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D4,READ_BIT(command,4));
+     15a:	c4 fb       	bst	r28, 4
+     15c:	66 27       	eor	r22, r22
+     15e:	60 f9       	bld	r22, 0
+     160:	83 e0       	ldi	r24, 0x03	; 3
+     162:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	//trigger rising edge
+	DIO_WritePin(EN,HIGH);
+     166:	61 e0       	ldi	r22, 0x01	; 1
+     168:	82 e0       	ldi	r24, 0x02	; 2
+     16a:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+     16e:	8f ec       	ldi	r24, 0xCF	; 207
+     170:	97 e0       	ldi	r25, 0x07	; 7
+     172:	01 97       	sbiw	r24, 0x01	; 1
+     174:	f1 f7       	brne	.-4      	; 0x172 <LCD_WriteCommand+0x4a>
+     176:	00 c0       	rjmp	.+0      	; 0x178 <LCD_WriteCommand+0x50>
+     178:	00 00       	nop
+	
+	//trigger time between rising and falling
+	_delay_ms(1);   
+	
+	//trigger falling edge          
+	DIO_WritePin(EN,LOW);  
+     17a:	60 e0       	ldi	r22, 0x00	; 0
+     17c:	82 e0       	ldi	r24, 0x02	; 2
+     17e:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+     182:	8f ec       	ldi	r24, 0xCF	; 207
+     184:	97 e0       	ldi	r25, 0x07	; 7
+     186:	01 97       	sbiw	r24, 0x01	; 1
+     188:	f1 f7       	brne	.-4      	; 0x186 <LCD_WriteCommand+0x5e>
+     18a:	00 c0       	rjmp	.+0      	; 0x18c <LCD_WriteCommand+0x64>
+     18c:	00 00       	nop
+	_delay_ms(1);
+	DIO_WritePin(D7,READ_BIT(command,3));
+     18e:	c3 fb       	bst	r28, 3
+     190:	66 27       	eor	r22, r22
+     192:	60 f9       	bld	r22, 0
+     194:	86 e0       	ldi	r24, 0x06	; 6
+     196:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D6,READ_BIT(command,2));
+     19a:	c2 fb       	bst	r28, 2
+     19c:	66 27       	eor	r22, r22
+     19e:	60 f9       	bld	r22, 0
+     1a0:	85 e0       	ldi	r24, 0x05	; 5
+     1a2:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D5,READ_BIT(command,1));
+     1a6:	c1 fb       	bst	r28, 1
+     1a8:	66 27       	eor	r22, r22
+     1aa:	60 f9       	bld	r22, 0
+     1ac:	84 e0       	ldi	r24, 0x04	; 4
+     1ae:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D4,READ_BIT(command,0));
+     1b2:	6c 2f       	mov	r22, r28
+     1b4:	61 70       	andi	r22, 0x01	; 1
+     1b6:	83 e0       	ldi	r24, 0x03	; 3
+     1b8:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	//trigger rising edge
+	DIO_WritePin(EN,HIGH);
+     1bc:	61 e0       	ldi	r22, 0x01	; 1
+     1be:	82 e0       	ldi	r24, 0x02	; 2
+     1c0:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+     1c4:	8f ec       	ldi	r24, 0xCF	; 207
+     1c6:	97 e0       	ldi	r25, 0x07	; 7
+     1c8:	01 97       	sbiw	r24, 0x01	; 1
+     1ca:	f1 f7       	brne	.-4      	; 0x1c8 <LCD_WriteCommand+0xa0>
+     1cc:	00 c0       	rjmp	.+0      	; 0x1ce <LCD_WriteCommand+0xa6>
+     1ce:	00 00       	nop
+	
+	//trigger time between rising and falling
+	_delay_ms(1);   
+	
+	//trigger falling edge          
+	DIO_WritePin(EN,LOW);  
+     1d0:	60 e0       	ldi	r22, 0x00	; 0
+     1d2:	82 e0       	ldi	r24, 0x02	; 2
+     1d4:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+     1d8:	8f ec       	ldi	r24, 0xCF	; 207
+     1da:	97 e0       	ldi	r25, 0x07	; 7
+     1dc:	01 97       	sbiw	r24, 0x01	; 1
+     1de:	f1 f7       	brne	.-4      	; 0x1dc <LCD_WriteCommand+0xb4>
+     1e0:	00 c0       	rjmp	.+0      	; 0x1e2 <LCD_WriteCommand+0xba>
+     1e2:	00 00       	nop
+	_delay_ms(1);
+}
+     1e4:	cf 91       	pop	r28
+     1e6:	08 95       	ret
+
+000001e8 <LCD_WriteData>:
+/********************************************************************************/
+
+/*******************************************************************************/
+/*to transmit data to LCD */
+static void LCD_WriteData(u8 data)
+{
+     1e8:	cf 93       	push	r28
+     1ea:	c8 2f       	mov	r28, r24
+	 // to transmit data we should make pin0=0
+	DIO_WritePin(RS,HIGH); 
+     1ec:	61 e0       	ldi	r22, 0x01	; 1
+     1ee:	81 e0       	ldi	r24, 0x01	; 1
+     1f0:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D7,READ_BIT(data,7));
+     1f4:	6c 2f       	mov	r22, r28
+     1f6:	66 1f       	adc	r22, r22
+     1f8:	66 27       	eor	r22, r22
+     1fa:	66 1f       	adc	r22, r22
+     1fc:	86 e0       	ldi	r24, 0x06	; 6
+     1fe:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D6,READ_BIT(data,6));
+     202:	c6 fb       	bst	r28, 6
+     204:	66 27       	eor	r22, r22
+     206:	60 f9       	bld	r22, 0
+     208:	85 e0       	ldi	r24, 0x05	; 5
+     20a:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D5,READ_BIT(data,5));
+     20e:	c5 fb       	bst	r28, 5
+     210:	66 27       	eor	r22, r22
+     212:	60 f9       	bld	r22, 0
+     214:	84 e0       	ldi	r24, 0x04	; 4
+     216:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D4,READ_BIT(data,4));
+     21a:	c4 fb       	bst	r28, 4
+     21c:	66 27       	eor	r22, r22
+     21e:	60 f9       	bld	r22, 0
+     220:	83 e0       	ldi	r24, 0x03	; 3
+     222:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	//trigger rising edge
+	DIO_WritePin(EN,HIGH);
+     226:	61 e0       	ldi	r22, 0x01	; 1
+     228:	82 e0       	ldi	r24, 0x02	; 2
+     22a:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+     22e:	8f ec       	ldi	r24, 0xCF	; 207
+     230:	97 e0       	ldi	r25, 0x07	; 7
+     232:	01 97       	sbiw	r24, 0x01	; 1
+     234:	f1 f7       	brne	.-4      	; 0x232 <LCD_WriteData+0x4a>
+     236:	00 c0       	rjmp	.+0      	; 0x238 <LCD_WriteData+0x50>
+     238:	00 00       	nop
+	
+	//trigger time between rising and falling
+	_delay_ms(1);    
+	
+	//trigger falling edge         
+	DIO_WritePin(EN,LOW);  
+     23a:	60 e0       	ldi	r22, 0x00	; 0
+     23c:	82 e0       	ldi	r24, 0x02	; 2
+     23e:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+     242:	8f ec       	ldi	r24, 0xCF	; 207
+     244:	97 e0       	ldi	r25, 0x07	; 7
+     246:	01 97       	sbiw	r24, 0x01	; 1
+     248:	f1 f7       	brne	.-4      	; 0x246 <LCD_WriteData+0x5e>
+     24a:	00 c0       	rjmp	.+0      	; 0x24c <LCD_WriteData+0x64>
+     24c:	00 00       	nop
+	
+	_delay_ms(1);
+	DIO_WritePin(D7,READ_BIT(data,3));
+     24e:	c3 fb       	bst	r28, 3
+     250:	66 27       	eor	r22, r22
+     252:	60 f9       	bld	r22, 0
+     254:	86 e0       	ldi	r24, 0x06	; 6
+     256:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D6,READ_BIT(data,2));
+     25a:	c2 fb       	bst	r28, 2
+     25c:	66 27       	eor	r22, r22
+     25e:	60 f9       	bld	r22, 0
+     260:	85 e0       	ldi	r24, 0x05	; 5
+     262:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D5,READ_BIT(data,1));
+     266:	c1 fb       	bst	r28, 1
+     268:	66 27       	eor	r22, r22
+     26a:	60 f9       	bld	r22, 0
+     26c:	84 e0       	ldi	r24, 0x04	; 4
+     26e:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	DIO_WritePin(D4,READ_BIT(data,0));
+     272:	6c 2f       	mov	r22, r28
+     274:	61 70       	andi	r22, 0x01	; 1
+     276:	83 e0       	ldi	r24, 0x03	; 3
+     278:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+	
+	//trigger rising edge
+	DIO_WritePin(EN,HIGH);
+     27c:	61 e0       	ldi	r22, 0x01	; 1
+     27e:	82 e0       	ldi	r24, 0x02	; 2
+     280:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+     284:	8f ec       	ldi	r24, 0xCF	; 207
+     286:	97 e0       	ldi	r25, 0x07	; 7
+     288:	01 97       	sbiw	r24, 0x01	; 1
+     28a:	f1 f7       	brne	.-4      	; 0x288 <LCD_WriteData+0xa0>
+     28c:	00 c0       	rjmp	.+0      	; 0x28e <LCD_WriteData+0xa6>
+     28e:	00 00       	nop
+	
+	//trigger time between rising and falling
+	_delay_ms(1);   
+	  
+	//trigger falling edge        
+	DIO_WritePin(EN,LOW);  
+     290:	60 e0       	ldi	r22, 0x00	; 0
+     292:	82 e0       	ldi	r24, 0x02	; 2
+     294:	0e 94 76 0a 	call	0x14ec	; 0x14ec <DIO_WritePin>
+     298:	8f ec       	ldi	r24, 0xCF	; 207
+     29a:	97 e0       	ldi	r25, 0x07	; 7
+     29c:	01 97       	sbiw	r24, 0x01	; 1
+     29e:	f1 f7       	brne	.-4      	; 0x29c <LCD_WriteData+0xb4>
+     2a0:	00 c0       	rjmp	.+0      	; 0x2a2 <LCD_WriteData+0xba>
+     2a2:	00 00       	nop
+	_delay_ms(1);
+	
+}
+     2a4:	cf 91       	pop	r28
+     2a6:	08 95       	ret
+
+000002a8 <LCD_Init>:
+     2a8:	2f e7       	ldi	r18, 0x7F	; 127
+     2aa:	88 e3       	ldi	r24, 0x38	; 56
+     2ac:	91 e0       	ldi	r25, 0x01	; 1
+     2ae:	21 50       	subi	r18, 0x01	; 1
+     2b0:	80 40       	sbci	r24, 0x00	; 0
+     2b2:	90 40       	sbci	r25, 0x00	; 0
+     2b4:	e1 f7       	brne	.-8      	; 0x2ae <LCD_Init+0x6>
+     2b6:	00 c0       	rjmp	.+0      	; 0x2b8 <LCD_Init+0x10>
+     2b8:	00 00       	nop
+/******************************************************************/
+/*to initialize LCD */
+void LCD_Init(void)
+{
+	_delay_ms(50);
+	LCD_WriteCommand(0x02);
+     2ba:	82 e0       	ldi	r24, 0x02	; 2
+     2bc:	0e 94 94 00 	call	0x128	; 0x128 <LCD_WriteCommand>
+	//2 line 5*7;
+	LCD_WriteCommand(0x28); 
+     2c0:	88 e2       	ldi	r24, 0x28	; 40
+     2c2:	0e 94 94 00 	call	0x128	; 0x128 <LCD_WriteCommand>
+	
+	//cursor 0x0f, 0x0E ;
+	LCD_WriteCommand(0x0c);  
+     2c6:	8c e0       	ldi	r24, 0x0C	; 12
+     2c8:	0e 94 94 00 	call	0x128	; 0x128 <LCD_WriteCommand>
+	
+	//clear screen;
+	LCD_WriteCommand(0x01); 
+     2cc:	81 e0       	ldi	r24, 0x01	; 1
+     2ce:	0e 94 94 00 	call	0x128	; 0x128 <LCD_WriteCommand>
+     2d2:	8f ec       	ldi	r24, 0xCF	; 207
+     2d4:	97 e0       	ldi	r25, 0x07	; 7
+     2d6:	01 97       	sbiw	r24, 0x01	; 1
+     2d8:	f1 f7       	brne	.-4      	; 0x2d6 <LCD_Init+0x2e>
+     2da:	00 c0       	rjmp	.+0      	; 0x2dc <LCD_Init+0x34>
+     2dc:	00 00       	nop
+	_delay_ms(1);
+	
+	//increase ddram address,no shift;
+	LCD_WriteCommand(0x06); 
+     2de:	86 e0       	ldi	r24, 0x06	; 6
+     2e0:	0e 94 94 00 	call	0x128	; 0x128 <LCD_WriteCommand>
+     2e4:	08 95       	ret
+
+000002e6 <LCD_WriteChar>:
+/*****************************************************************************/
+
+//to WriteChar on LCD 
+void LCD_WriteChar(u8 ch)
+{
+	LCD_WriteData(ch);
+     2e6:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <LCD_WriteData>
+     2ea:	08 95       	ret
+
+000002ec <LCD_WriteString>:
+}
+
+//to Write String on LCD 
+void LCD_WriteString(u8*str)
+{
+     2ec:	0f 93       	push	r16
+     2ee:	1f 93       	push	r17
+     2f0:	cf 93       	push	r28
+     2f2:	8c 01       	movw	r16, r24
+	u8 i;
+	
+	//loop to transmit character by character of string
+	for(i=0;str[i];i++)
+     2f4:	c0 e0       	ldi	r28, 0x00	; 0
+     2f6:	03 c0       	rjmp	.+6      	; 0x2fe <LCD_WriteString+0x12>
+	{
+		LCD_WriteData(str[i]);
+     2f8:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <LCD_WriteData>
+void LCD_WriteString(u8*str)
+{
+	u8 i;
+	
+	//loop to transmit character by character of string
+	for(i=0;str[i];i++)
+     2fc:	cf 5f       	subi	r28, 0xFF	; 255
+     2fe:	f8 01       	movw	r30, r16
+     300:	ec 0f       	add	r30, r28
+     302:	f1 1d       	adc	r31, r1
+     304:	80 81       	ld	r24, Z
+     306:	81 11       	cpse	r24, r1
+     308:	f7 cf       	rjmp	.-18     	; 0x2f8 <LCD_WriteString+0xc>
+	{
+		LCD_WriteData(str[i]);
+		
+	}
+}
+     30a:	cf 91       	pop	r28
+     30c:	1f 91       	pop	r17
+     30e:	0f 91       	pop	r16
+     310:	08 95       	ret
+
+00000312 <LCD_WriteNumber>:
+
+//to Write Number on LCD 
+void LCD_WriteNumber(s32 num)//2503
+{
+     312:	cf 92       	push	r12
+     314:	df 92       	push	r13
+     316:	ef 92       	push	r14
+     318:	ff 92       	push	r15
+     31a:	1f 93       	push	r17
+     31c:	cf 93       	push	r28
+     31e:	df 93       	push	r29
+     320:	cd b7       	in	r28, 0x3d	; 61
+     322:	de b7       	in	r29, 0x3e	; 62
+     324:	64 97       	sbiw	r28, 0x14	; 20
+     326:	0f b6       	in	r0, 0x3f	; 63
+     328:	f8 94       	cli
+     32a:	de bf       	out	0x3e, r29	; 62
+     32c:	0f be       	out	0x3f, r0	; 63
+     32e:	cd bf       	out	0x3d, r28	; 61
+     330:	6b 01       	movw	r12, r22
+     332:	7c 01       	movw	r14, r24
+	u8 str[20];
+	u8 rem,i=0;
+	if(num==0)
+     334:	61 15       	cp	r22, r1
+     336:	71 05       	cpc	r23, r1
+     338:	81 05       	cpc	r24, r1
+     33a:	91 05       	cpc	r25, r1
+     33c:	21 f4       	brne	.+8      	; 0x346 <LCD_WriteNumber+0x34>
+	{
+		LCD_WriteChar('0');
+     33e:	80 e3       	ldi	r24, 0x30	; 48
+     340:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+     344:	3b c0       	rjmp	.+118    	; 0x3bc <LCD_WriteNumber+0xaa>
+		return;
+	}
+	if(num<0)
+     346:	99 23       	and	r25, r25
+     348:	5c f4       	brge	.+22     	; 0x360 <LCD_WriteNumber+0x4e>
+	{
+		num=num*-1;
+     34a:	f0 94       	com	r15
+     34c:	e0 94       	com	r14
+     34e:	d0 94       	com	r13
+     350:	c0 94       	com	r12
+     352:	c1 1c       	adc	r12, r1
+     354:	d1 1c       	adc	r13, r1
+     356:	e1 1c       	adc	r14, r1
+     358:	f1 1c       	adc	r15, r1
+		LCD_WriteChar('-');
+     35a:	8d e2       	ldi	r24, 0x2D	; 45
+     35c:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+	}
+}
+
+//to Write Number on LCD 
+void LCD_WriteNumber(s32 num)//2503
+{
+     360:	10 e0       	ldi	r17, 0x00	; 0
+     362:	15 c0       	rjmp	.+42     	; 0x38e <LCD_WriteNumber+0x7c>
+	}
+	
+	//to convert each digit in  number  to character and store it in array of character
+	while(num>0)
+	{
+		rem = num % 10;
+     364:	c7 01       	movw	r24, r14
+     366:	b6 01       	movw	r22, r12
+     368:	2a e0       	ldi	r18, 0x0A	; 10
+     36a:	30 e0       	ldi	r19, 0x00	; 0
+     36c:	40 e0       	ldi	r20, 0x00	; 0
+     36e:	50 e0       	ldi	r21, 0x00	; 0
+     370:	0e 94 43 0b 	call	0x1686	; 0x1686 <__divmodsi4>
+		str[i] = rem + '0';
+     374:	e1 e0       	ldi	r30, 0x01	; 1
+     376:	f0 e0       	ldi	r31, 0x00	; 0
+     378:	ec 0f       	add	r30, r28
+     37a:	fd 1f       	adc	r31, r29
+     37c:	e1 0f       	add	r30, r17
+     37e:	f1 1d       	adc	r31, r1
+     380:	60 5d       	subi	r22, 0xD0	; 208
+     382:	60 83       	st	Z, r22
+		num= num / 10;
+     384:	c2 2e       	mov	r12, r18
+     386:	d3 2e       	mov	r13, r19
+     388:	e4 2e       	mov	r14, r20
+     38a:	f5 2e       	mov	r15, r21
+		i++;
+     38c:	1f 5f       	subi	r17, 0xFF	; 255
+		num=num*-1;
+		LCD_WriteChar('-');
+	}
+	
+	//to convert each digit in  number  to character and store it in array of character
+	while(num>0)
+     38e:	1c 14       	cp	r1, r12
+     390:	1d 04       	cpc	r1, r13
+     392:	1e 04       	cpc	r1, r14
+     394:	1f 04       	cpc	r1, r15
+     396:	34 f3       	brlt	.-52     	; 0x364 <LCD_WriteNumber+0x52>
+		num= num / 10;
+		i++;
+	}
+	
+	//loop to transmit each character in array to LCD
+	for(s8 j = i - 1 ; j >= 0 ; j--)
+     398:	ff 24       	eor	r15, r15
+     39a:	fa 94       	dec	r15
+     39c:	f1 0e       	add	r15, r17
+     39e:	0c c0       	rjmp	.+24     	; 0x3b8 <LCD_WriteNumber+0xa6>
+	{
+		LCD_WriteChar(str[j]);
+     3a0:	e1 e0       	ldi	r30, 0x01	; 1
+     3a2:	f0 e0       	ldi	r31, 0x00	; 0
+     3a4:	ec 0f       	add	r30, r28
+     3a6:	fd 1f       	adc	r31, r29
+     3a8:	ef 0d       	add	r30, r15
+     3aa:	f1 1d       	adc	r31, r1
+     3ac:	f7 fc       	sbrc	r15, 7
+     3ae:	fa 95       	dec	r31
+     3b0:	80 81       	ld	r24, Z
+     3b2:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+		num= num / 10;
+		i++;
+	}
+	
+	//loop to transmit each character in array to LCD
+	for(s8 j = i - 1 ; j >= 0 ; j--)
+     3b6:	fa 94       	dec	r15
+     3b8:	ff 20       	and	r15, r15
+     3ba:	94 f7       	brge	.-28     	; 0x3a0 <LCD_WriteNumber+0x8e>
+	{
+		LCD_WriteChar(str[j]);
+	}
+	
+}
+     3bc:	64 96       	adiw	r28, 0x14	; 20
+     3be:	0f b6       	in	r0, 0x3f	; 63
+     3c0:	f8 94       	cli
+     3c2:	de bf       	out	0x3e, r29	; 62
+     3c4:	0f be       	out	0x3f, r0	; 63
+     3c6:	cd bf       	out	0x3d, r28	; 61
+     3c8:	df 91       	pop	r29
+     3ca:	cf 91       	pop	r28
+     3cc:	1f 91       	pop	r17
+     3ce:	ff 90       	pop	r15
+     3d0:	ef 90       	pop	r14
+     3d2:	df 90       	pop	r13
+     3d4:	cf 90       	pop	r12
+     3d6:	08 95       	ret
+
+000003d8 <LCD_WriteBinary>:
+
+//to Write Binary on LCD 
+void LCD_WriteBinary(u8 num)//
+{
+     3d8:	1f 93       	push	r17
+     3da:	cf 93       	push	r28
+     3dc:	df 93       	push	r29
+     3de:	18 2f       	mov	r17, r24
+	s8 i,flag = 0;
+     3e0:	d0 e0       	ldi	r29, 0x00	; 0
+	
+	//Loop to check if each bit in the number is equal to 1 or 0 
+	for(i = 7 ; i >= 0 ; i--)
+     3e2:	c7 e0       	ldi	r28, 0x07	; 7
+     3e4:	15 c0       	rjmp	.+42     	; 0x410 <__EEPROM_REGION_LENGTH__+0x10>
+	{
+		if(num >> i & 1)
+     3e6:	81 2f       	mov	r24, r17
+     3e8:	90 e0       	ldi	r25, 0x00	; 0
+     3ea:	0c 2e       	mov	r0, r28
+     3ec:	02 c0       	rjmp	.+4      	; 0x3f2 <LCD_WriteBinary+0x1a>
+     3ee:	95 95       	asr	r25
+     3f0:	87 95       	ror	r24
+     3f2:	0a 94       	dec	r0
+     3f4:	e2 f7       	brpl	.-8      	; 0x3ee <LCD_WriteBinary+0x16>
+     3f6:	80 ff       	sbrs	r24, 0
+     3f8:	05 c0       	rjmp	.+10     	; 0x404 <__EEPROM_REGION_LENGTH__+0x4>
+		{
+			LCD_WriteChar('1');
+     3fa:	81 e3       	ldi	r24, 0x31	; 49
+     3fc:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+			flag = 1;
+     400:	d1 e0       	ldi	r29, 0x01	; 1
+     402:	05 c0       	rjmp	.+10     	; 0x40e <__EEPROM_REGION_LENGTH__+0xe>
+		}
+		else{
+			if(flag == 1)
+     404:	d1 30       	cpi	r29, 0x01	; 1
+     406:	19 f4       	brne	.+6      	; 0x40e <__EEPROM_REGION_LENGTH__+0xe>
+			{
+				LCD_WriteChar('0');
+     408:	80 e3       	ldi	r24, 0x30	; 48
+     40a:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+void LCD_WriteBinary(u8 num)//
+{
+	s8 i,flag = 0;
+	
+	//Loop to check if each bit in the number is equal to 1 or 0 
+	for(i = 7 ; i >= 0 ; i--)
+     40e:	c1 50       	subi	r28, 0x01	; 1
+     410:	cc 23       	and	r28, r28
+     412:	4c f7       	brge	.-46     	; 0x3e6 <LCD_WriteBinary+0xe>
+				LCD_WriteChar('0');
+			}
+			
+		}
+	}
+}
+     414:	df 91       	pop	r29
+     416:	cf 91       	pop	r28
+     418:	1f 91       	pop	r17
+     41a:	08 95       	ret
+
+0000041c <LCD_GoTo>:
+
+//To set cursor at specific position
+void LCD_GoTo(u8 line,u8 cell)
+{
+	if(line==0)
+     41c:	81 11       	cpse	r24, r1
+     41e:	05 c0       	rjmp	.+10     	; 0x42a <LCD_GoTo+0xe>
+	{
+		LCD_WriteCommand(0x80|cell);
+     420:	86 2f       	mov	r24, r22
+     422:	80 68       	ori	r24, 0x80	; 128
+     424:	0e 94 94 00 	call	0x128	; 0x128 <LCD_WriteCommand>
+     428:	08 95       	ret
+	}
+	else if(line==1)
+     42a:	81 30       	cpi	r24, 0x01	; 1
+     42c:	21 f4       	brne	.+8      	; 0x436 <LCD_GoTo+0x1a>
+	{
+		LCD_WriteCommand(0x80+0x40+cell);
+     42e:	80 ec       	ldi	r24, 0xC0	; 192
+     430:	86 0f       	add	r24, r22
+     432:	0e 94 94 00 	call	0x128	; 0x128 <LCD_WriteCommand>
+     436:	08 95       	ret
+
+00000438 <LCD_Clear>:
+}
+
+//To clear any data on LCD
+void LCD_Clear(void)
+{
+	LCD_WriteCommand(0x01);
+     438:	81 e0       	ldi	r24, 0x01	; 1
+     43a:	0e 94 94 00 	call	0x128	; 0x128 <LCD_WriteCommand>
+     43e:	08 95       	ret
+
+00000440 <LCD_WriteHex>:
+}
+
+//to write Hexadecimal on LCD
+void LCD_WriteHex(u8 num)// 0xfe
+{
+     440:	cf 93       	push	r28
+	//u8 HexArray[]={'0','1','2','3'}
+		
+	//store High nibble of num 	
+	u8 Hnibble = num >> 4;//0f
+     442:	98 2f       	mov	r25, r24
+     444:	92 95       	swap	r25
+     446:	9f 70       	andi	r25, 0x0F	; 15
+	
+	//store LOW nibble of num
+	u8 Lnibble = num & 0x0f;//0e
+     448:	c8 2f       	mov	r28, r24
+     44a:	cf 70       	andi	r28, 0x0F	; 15
+	
+	if(Hnibble <= 9)
+     44c:	9a 30       	cpi	r25, 0x0A	; 10
+     44e:	28 f4       	brcc	.+10     	; 0x45a <LCD_WriteHex+0x1a>
+	{
+		LCD_WriteChar(Hnibble+'0');
+     450:	80 e3       	ldi	r24, 0x30	; 48
+     452:	89 0f       	add	r24, r25
+     454:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+     458:	04 c0       	rjmp	.+8      	; 0x462 <LCD_WriteHex+0x22>
+	}
+	else 
+	{
+		LCD_WriteChar(Hnibble-10+'A');
+     45a:	87 e3       	ldi	r24, 0x37	; 55
+     45c:	89 0f       	add	r24, r25
+     45e:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+		
+	}
+	if(Lnibble <= 9)
+     462:	ca 30       	cpi	r28, 0x0A	; 10
+     464:	28 f4       	brcc	.+10     	; 0x470 <LCD_WriteHex+0x30>
+	{
+		LCD_WriteChar(Lnibble+'0');
+     466:	80 e3       	ldi	r24, 0x30	; 48
+     468:	8c 0f       	add	r24, r28
+     46a:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+     46e:	04 c0       	rjmp	.+8      	; 0x478 <LCD_WriteHex+0x38>
+	}
+	else {
+		LCD_WriteChar(Lnibble-10+'A');
+     470:	87 e3       	ldi	r24, 0x37	; 55
+     472:	8c 0f       	add	r24, r28
+     474:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+		
+	}
+	
+	//LCD_WriteChar(HexArray[Lnibble]);
+}
+     478:	cf 91       	pop	r28
+     47a:	08 95       	ret
+
+0000047c <decimal_to_binary>:
+
+/******************Defintions of converting functions**************/
+
+/*****************************Covert from Decimal_to_Binary**********/
+void decimal_to_binary(void)
+{
+     47c:	0f 93       	push	r16
+     47e:	1f 93       	push	r17
+	/*checking the first execution  of the converting function*/
+	if(flag_stat == 0)
+     480:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     484:	81 11       	cpse	r24, r1
+     486:	16 c0       	rjmp	.+44     	; 0x4b4 <decimal_to_binary+0x38>
+	{
+		LCD_GoTo(0,0);
+     488:	60 e0       	ldi	r22, 0x00	; 0
+     48a:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("D:");
+     48e:	81 e7       	ldi	r24, 0x71	; 113
+     490:	90 e0       	ldi	r25, 0x00	; 0
+     492:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(1,0);
+     496:	60 e0       	ldi	r22, 0x00	; 0
+     498:	81 e0       	ldi	r24, 0x01	; 1
+     49a:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("B:");
+     49e:	84 e7       	ldi	r24, 0x74	; 116
+     4a0:	90 e0       	ldi	r25, 0x00	; 0
+     4a2:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(0,2);
+     4a6:	62 e0       	ldi	r22, 0x02	; 2
+     4a8:	80 e0       	ldi	r24, 0x00	; 0
+     4aa:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		flag_stat = 1;
+     4ae:	81 e0       	ldi	r24, 0x01	; 1
+     4b0:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+	}
+	
+	/* Getting the current pressed key */
+	key = KEYPAD_GetKey();
+     4b4:	0e 94 49 00 	call	0x92	; 0x92 <KEYPAD_GetKey>
+     4b8:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	if(key != NO_KEY)
+     4bc:	8e 34       	cpi	r24, 0x4E	; 78
+     4be:	09 f4       	brne	.+2      	; 0x4c2 <decimal_to_binary+0x46>
+     4c0:	89 c0       	rjmp	.+274    	; 0x5d4 <decimal_to_binary+0x158>
+	{
+		//checking for clearing any values in this location on LCD 
+		if(flag_stat == 1)
+     4c2:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     4c6:	81 30       	cpi	r24, 0x01	; 1
+     4c8:	79 f4       	brne	.+30     	; 0x4e8 <decimal_to_binary+0x6c>
+		{
+			LCD_GoTo(0,2);
+     4ca:	62 e0       	ldi	r22, 0x02	; 2
+     4cc:	80 e0       	ldi	r24, 0x00	; 0
+     4ce:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			
+			//To clear any values in this location on LCD
+			LCD_WriteString("              ");
+     4d2:	87 e7       	ldi	r24, 0x77	; 119
+     4d4:	90 e0       	ldi	r25, 0x00	; 0
+     4d6:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			LCD_GoTo(0,2);
+     4da:	62 e0       	ldi	r22, 0x02	; 2
+     4dc:	80 e0       	ldi	r24, 0x00	; 0
+     4de:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			
+			/*To make the upcoming execution of function is not first one*/
+			flag_stat = 2;
+     4e2:	82 e0       	ldi	r24, 0x02	; 2
+     4e4:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+		}
+		
+		//checking if the character between 0 to 9
+		if(key >= '0' && key <= '9')
+     4e8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     4ec:	90 ed       	ldi	r25, 0xD0	; 208
+     4ee:	98 0f       	add	r25, r24
+     4f0:	9a 30       	cpi	r25, 0x0A	; 10
+     4f2:	a0 f5       	brcc	.+104    	; 0x55c <decimal_to_binary+0xe0>
+		{
+			///display the character on LCD
+			LCD_WriteChar(key);
+     4f4:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+			
+			//to store the successive characters as decimal
+			num= num * 10 + (key-'0');
+     4f8:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     4fc:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     500:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     504:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     508:	88 0f       	add	r24, r24
+     50a:	99 1f       	adc	r25, r25
+     50c:	aa 1f       	adc	r26, r26
+     50e:	bb 1f       	adc	r27, r27
+     510:	8c 01       	movw	r16, r24
+     512:	9d 01       	movw	r18, r26
+     514:	00 0f       	add	r16, r16
+     516:	11 1f       	adc	r17, r17
+     518:	22 1f       	adc	r18, r18
+     51a:	33 1f       	adc	r19, r19
+     51c:	00 0f       	add	r16, r16
+     51e:	11 1f       	adc	r17, r17
+     520:	22 1f       	adc	r18, r18
+     522:	33 1f       	adc	r19, r19
+     524:	ac 01       	movw	r20, r24
+     526:	bd 01       	movw	r22, r26
+     528:	40 0f       	add	r20, r16
+     52a:	51 1f       	adc	r21, r17
+     52c:	62 1f       	adc	r22, r18
+     52e:	73 1f       	adc	r23, r19
+     530:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     534:	30 e0       	ldi	r19, 0x00	; 0
+     536:	c9 01       	movw	r24, r18
+     538:	c0 97       	sbiw	r24, 0x30	; 48
+     53a:	09 2e       	mov	r0, r25
+     53c:	00 0c       	add	r0, r0
+     53e:	aa 0b       	sbc	r26, r26
+     540:	bb 0b       	sbc	r27, r27
+     542:	84 0f       	add	r24, r20
+     544:	95 1f       	adc	r25, r21
+     546:	a6 1f       	adc	r26, r22
+     548:	b7 1f       	adc	r27, r23
+     54a:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+     54e:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+     552:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+     556:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+     55a:	3c c0       	rjmp	.+120    	; 0x5d4 <decimal_to_binary+0x158>
+		}
+		
+		//checking if the current pressed key is '=' to convert the value of num
+		else if(key == '=')
+     55c:	8d 33       	cpi	r24, 0x3D	; 61
+     55e:	e1 f4       	brne	.+56     	; 0x598 <decimal_to_binary+0x11c>
+		{
+			LCD_GoTo(1,2);
+     560:	62 e0       	ldi	r22, 0x02	; 2
+     562:	81 e0       	ldi	r24, 0x01	; 1
+     564:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			
+			//convert number to binary and display it on LCD
+			LCD_WriteBinary(num);
+     568:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     56c:	0e 94 ec 01 	call	0x3d8	; 0x3d8 <LCD_WriteBinary>
+			
+			LCD_WriteString("      ");
+     570:	8f e7       	ldi	r24, 0x7F	; 127
+     572:	90 e0       	ldi	r25, 0x00	; 0
+     574:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			LCD_GoTo(0,2);
+     578:	62 e0       	ldi	r22, 0x02	; 2
+     57a:	80 e0       	ldi	r24, 0x00	; 0
+     57c:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			flag_stat = 1;
+     580:	81 e0       	ldi	r24, 0x01	; 1
+     582:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+			num = 0;
+     586:	10 92 f2 00 	sts	0x00F2, r1	; 0x8000f2 <__data_end>
+     58a:	10 92 f3 00 	sts	0x00F3, r1	; 0x8000f3 <__data_end+0x1>
+     58e:	10 92 f4 00 	sts	0x00F4, r1	; 0x8000f4 <__data_end+0x2>
+     592:	10 92 f5 00 	sts	0x00F5, r1	; 0x8000f5 <__data_end+0x3>
+     596:	1e c0       	rjmp	.+60     	; 0x5d4 <decimal_to_binary+0x158>
+			
+		}
+		//checking if the user wants to select another type of conversion
+		else if(key == 'C')
+     598:	83 34       	cpi	r24, 0x43	; 67
+     59a:	29 f4       	brne	.+10     	; 0x5a6 <decimal_to_binary+0x12a>
+		{
+			//to return to selection list
+			flag_stage = 0;
+     59c:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			
+			//to return to the first use
+			flag_stat = 0;
+     5a0:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     5a4:	17 c0       	rjmp	.+46     	; 0x5d4 <decimal_to_binary+0x158>
+		}
+		
+		/*If the user enter wrong value */
+		else
+		{
+			LCD_Clear();
+     5a6:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+			LCD_GoTo(0,0);
+     5aa:	60 e0       	ldi	r22, 0x00	; 0
+     5ac:	80 e0       	ldi	r24, 0x00	; 0
+     5ae:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			LCD_WriteString("wrong number!!");
+     5b2:	86 e8       	ldi	r24, 0x86	; 134
+     5b4:	90 e0       	ldi	r25, 0x00	; 0
+     5b6:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+     5ba:	2f ef       	ldi	r18, 0xFF	; 255
+     5bc:	8e e9       	ldi	r24, 0x9E	; 158
+     5be:	94 e2       	ldi	r25, 0x24	; 36
+     5c0:	21 50       	subi	r18, 0x01	; 1
+     5c2:	80 40       	sbci	r24, 0x00	; 0
+     5c4:	90 40       	sbci	r25, 0x00	; 0
+     5c6:	e1 f7       	brne	.-8      	; 0x5c0 <decimal_to_binary+0x144>
+     5c8:	00 c0       	rjmp	.+0      	; 0x5ca <decimal_to_binary+0x14e>
+     5ca:	00 00       	nop
+			_delay_ms(1500);
+			flag_stage = 0;
+     5cc:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			flag_stat = 0;
+     5d0:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+		}
+		
+	}
+}
+     5d4:	1f 91       	pop	r17
+     5d6:	0f 91       	pop	r16
+     5d8:	08 95       	ret
+
+000005da <decimal_to_decimal>:
+/*****************************************************************************/
+
+/****************************Covert from Decimal_to_Decimal**************/
+void decimal_to_decimal(void)
+{
+     5da:	0f 93       	push	r16
+     5dc:	1f 93       	push	r17
+	/*checking the first execution  of the converting function*/
+	if(flag_stat == 0)
+     5de:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     5e2:	81 11       	cpse	r24, r1
+     5e4:	16 c0       	rjmp	.+44     	; 0x612 <decimal_to_decimal+0x38>
+	{
+		LCD_GoTo(0,0);
+     5e6:	60 e0       	ldi	r22, 0x00	; 0
+     5e8:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("D:");
+     5ec:	81 e7       	ldi	r24, 0x71	; 113
+     5ee:	90 e0       	ldi	r25, 0x00	; 0
+     5f0:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(1,0);
+     5f4:	60 e0       	ldi	r22, 0x00	; 0
+     5f6:	81 e0       	ldi	r24, 0x01	; 1
+     5f8:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("D:");
+     5fc:	81 e7       	ldi	r24, 0x71	; 113
+     5fe:	90 e0       	ldi	r25, 0x00	; 0
+     600:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(0,2);
+     604:	62 e0       	ldi	r22, 0x02	; 2
+     606:	80 e0       	ldi	r24, 0x00	; 0
+     608:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		flag_stat = 1;
+     60c:	81 e0       	ldi	r24, 0x01	; 1
+     60e:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+	}
+	
+	/* Getting the current pressed key */
+	key = KEYPAD_GetKey();
+     612:	0e 94 49 00 	call	0x92	; 0x92 <KEYPAD_GetKey>
+     616:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	if(key != NO_KEY)
+     61a:	8e 34       	cpi	r24, 0x4E	; 78
+     61c:	09 f4       	brne	.+2      	; 0x620 <decimal_to_decimal+0x46>
+     61e:	8b c0       	rjmp	.+278    	; 0x736 <decimal_to_decimal+0x15c>
+	{
+		//checking for clearing any values in this location on LCD 
+		if(flag_stat == 1)
+     620:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     624:	81 30       	cpi	r24, 0x01	; 1
+     626:	79 f4       	brne	.+30     	; 0x646 <decimal_to_decimal+0x6c>
+		{
+			LCD_GoTo(0,2);
+     628:	62 e0       	ldi	r22, 0x02	; 2
+     62a:	80 e0       	ldi	r24, 0x00	; 0
+     62c:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			
+			//To clear any values in this location on LCD
+			LCD_WriteString("              ");
+     630:	87 e7       	ldi	r24, 0x77	; 119
+     632:	90 e0       	ldi	r25, 0x00	; 0
+     634:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			
+			LCD_GoTo(0,2);
+     638:	62 e0       	ldi	r22, 0x02	; 2
+     63a:	80 e0       	ldi	r24, 0x00	; 0
+     63c:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			/*To make the upcoming execution of function is not first one*/
+			flag_stat = 2;
+     640:	82 e0       	ldi	r24, 0x02	; 2
+     642:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+		}
+		//checking if the character between 0 to 9
+		if(key >='0' && key <= '9')
+     646:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     64a:	90 ed       	ldi	r25, 0xD0	; 208
+     64c:	98 0f       	add	r25, r24
+     64e:	9a 30       	cpi	r25, 0x0A	; 10
+     650:	a0 f5       	brcc	.+104    	; 0x6ba <decimal_to_decimal+0xe0>
+		{
+			//display the character on LCD
+			LCD_WriteChar(key);
+     652:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+			
+			//to store the successive characters as decimal
+			num = num * 10 + (key-'0');	
+     656:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     65a:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     65e:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     662:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     666:	88 0f       	add	r24, r24
+     668:	99 1f       	adc	r25, r25
+     66a:	aa 1f       	adc	r26, r26
+     66c:	bb 1f       	adc	r27, r27
+     66e:	8c 01       	movw	r16, r24
+     670:	9d 01       	movw	r18, r26
+     672:	00 0f       	add	r16, r16
+     674:	11 1f       	adc	r17, r17
+     676:	22 1f       	adc	r18, r18
+     678:	33 1f       	adc	r19, r19
+     67a:	00 0f       	add	r16, r16
+     67c:	11 1f       	adc	r17, r17
+     67e:	22 1f       	adc	r18, r18
+     680:	33 1f       	adc	r19, r19
+     682:	ac 01       	movw	r20, r24
+     684:	bd 01       	movw	r22, r26
+     686:	40 0f       	add	r20, r16
+     688:	51 1f       	adc	r21, r17
+     68a:	62 1f       	adc	r22, r18
+     68c:	73 1f       	adc	r23, r19
+     68e:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     692:	30 e0       	ldi	r19, 0x00	; 0
+     694:	c9 01       	movw	r24, r18
+     696:	c0 97       	sbiw	r24, 0x30	; 48
+     698:	09 2e       	mov	r0, r25
+     69a:	00 0c       	add	r0, r0
+     69c:	aa 0b       	sbc	r26, r26
+     69e:	bb 0b       	sbc	r27, r27
+     6a0:	84 0f       	add	r24, r20
+     6a2:	95 1f       	adc	r25, r21
+     6a4:	a6 1f       	adc	r26, r22
+     6a6:	b7 1f       	adc	r27, r23
+     6a8:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+     6ac:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+     6b0:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+     6b4:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+     6b8:	3e c0       	rjmp	.+124    	; 0x736 <decimal_to_decimal+0x15c>
+		}
+		
+		//checking if the current pressed key is '=' to convert the value of num
+		else if(key == '=')
+     6ba:	8d 33       	cpi	r24, 0x3D	; 61
+     6bc:	f1 f4       	brne	.+60     	; 0x6fa <decimal_to_decimal+0x120>
+		{
+			LCD_GoTo(1,2);
+     6be:	62 e0       	ldi	r22, 0x02	; 2
+     6c0:	81 e0       	ldi	r24, 0x01	; 1
+     6c2:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			
+			//convert number to decimal and display it on LCD
+			LCD_WriteNumber(num);
+     6c6:	60 91 f2 00 	lds	r22, 0x00F2	; 0x8000f2 <__data_end>
+     6ca:	70 91 f3 00 	lds	r23, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     6ce:	80 91 f4 00 	lds	r24, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     6d2:	90 91 f5 00 	lds	r25, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     6d6:	0e 94 89 01 	call	0x312	; 0x312 <LCD_WriteNumber>
+			
+			LCD_WriteString("      ");
+     6da:	8f e7       	ldi	r24, 0x7F	; 127
+     6dc:	90 e0       	ldi	r25, 0x00	; 0
+     6de:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			flag_stat = 1;
+     6e2:	81 e0       	ldi	r24, 0x01	; 1
+     6e4:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+			num = 0;
+     6e8:	10 92 f2 00 	sts	0x00F2, r1	; 0x8000f2 <__data_end>
+     6ec:	10 92 f3 00 	sts	0x00F3, r1	; 0x8000f3 <__data_end+0x1>
+     6f0:	10 92 f4 00 	sts	0x00F4, r1	; 0x8000f4 <__data_end+0x2>
+     6f4:	10 92 f5 00 	sts	0x00F5, r1	; 0x8000f5 <__data_end+0x3>
+     6f8:	1e c0       	rjmp	.+60     	; 0x736 <decimal_to_decimal+0x15c>
+			
+		}
+		//checking if the user wants to select another type of conversion
+		else if(key == 'C')
+     6fa:	83 34       	cpi	r24, 0x43	; 67
+     6fc:	29 f4       	brne	.+10     	; 0x708 <decimal_to_decimal+0x12e>
+		{
+			//to return to selection list
+			flag_stage = 0;
+     6fe:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			
+			//here return to the first use
+			flag_stat = 0;
+     702:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     706:	17 c0       	rjmp	.+46     	; 0x736 <decimal_to_decimal+0x15c>
+		}
+		
+		/*If the user enter wrong value */
+		else
+		{
+			LCD_Clear();
+     708:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+			LCD_GoTo(0,0);
+     70c:	60 e0       	ldi	r22, 0x00	; 0
+     70e:	80 e0       	ldi	r24, 0x00	; 0
+     710:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			LCD_WriteString("wrong number!!");
+     714:	86 e8       	ldi	r24, 0x86	; 134
+     716:	90 e0       	ldi	r25, 0x00	; 0
+     718:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+     71c:	2f ef       	ldi	r18, 0xFF	; 255
+     71e:	8e e9       	ldi	r24, 0x9E	; 158
+     720:	94 e2       	ldi	r25, 0x24	; 36
+     722:	21 50       	subi	r18, 0x01	; 1
+     724:	80 40       	sbci	r24, 0x00	; 0
+     726:	90 40       	sbci	r25, 0x00	; 0
+     728:	e1 f7       	brne	.-8      	; 0x722 <decimal_to_decimal+0x148>
+     72a:	00 c0       	rjmp	.+0      	; 0x72c <decimal_to_decimal+0x152>
+     72c:	00 00       	nop
+			_delay_ms(1500);
+			flag_stage = 0;
+     72e:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			flag_stat = 0;
+     732:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+		}
+	}
+}
+     736:	1f 91       	pop	r17
+     738:	0f 91       	pop	r16
+     73a:	08 95       	ret
+
+0000073c <decimal_to_HEX>:
+/********************************************************************************/
+
+/********************************Covert from Decimal_to_HEX*******************/
+void decimal_to_HEX(void)
+{
+     73c:	0f 93       	push	r16
+     73e:	1f 93       	push	r17
+	/*checking the first execution  of the converting function*/
+	if(flag_stat == 0)
+     740:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     744:	81 11       	cpse	r24, r1
+     746:	16 c0       	rjmp	.+44     	; 0x774 <decimal_to_HEX+0x38>
+	{
+		LCD_GoTo(0,0);
+     748:	60 e0       	ldi	r22, 0x00	; 0
+     74a:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("D:");
+     74e:	81 e7       	ldi	r24, 0x71	; 113
+     750:	90 e0       	ldi	r25, 0x00	; 0
+     752:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(1,0);
+     756:	60 e0       	ldi	r22, 0x00	; 0
+     758:	81 e0       	ldi	r24, 0x01	; 1
+     75a:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("H:");
+     75e:	85 e9       	ldi	r24, 0x95	; 149
+     760:	90 e0       	ldi	r25, 0x00	; 0
+     762:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(0,2);
+     766:	62 e0       	ldi	r22, 0x02	; 2
+     768:	80 e0       	ldi	r24, 0x00	; 0
+     76a:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		flag_stat = 1;
+     76e:	81 e0       	ldi	r24, 0x01	; 1
+     770:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+	}
+
+	/* Getting the current pressed key */
+	key = KEYPAD_GetKey();
+     774:	0e 94 49 00 	call	0x92	; 0x92 <KEYPAD_GetKey>
+     778:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	if(key != NO_KEY)
+     77c:	8e 34       	cpi	r24, 0x4E	; 78
+     77e:	09 f4       	brne	.+2      	; 0x782 <decimal_to_HEX+0x46>
+     780:	81 c0       	rjmp	.+258    	; 0x884 <__stack+0x25>
+	{
+		//checking for clearing any values in this location on LCD
+		if(flag_stat == 1)
+     782:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     786:	81 30       	cpi	r24, 0x01	; 1
+     788:	59 f4       	brne	.+22     	; 0x7a0 <decimal_to_HEX+0x64>
+		{
+			//To clear any values in this location on LCD
+			LCD_WriteString("              ");
+     78a:	87 e7       	ldi	r24, 0x77	; 119
+     78c:	90 e0       	ldi	r25, 0x00	; 0
+     78e:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			
+			LCD_GoTo(0,2);
+     792:	62 e0       	ldi	r22, 0x02	; 2
+     794:	80 e0       	ldi	r24, 0x00	; 0
+     796:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			/*To make the upcoming execution of function is not first one*/
+			flag_stat = 2;
+     79a:	82 e0       	ldi	r24, 0x02	; 2
+     79c:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+		}
+		
+		//checking if the character between 0 to 9
+		if(key >='0' && key <= '9')
+     7a0:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     7a4:	90 ed       	ldi	r25, 0xD0	; 208
+     7a6:	98 0f       	add	r25, r24
+     7a8:	9a 30       	cpi	r25, 0x0A	; 10
+     7aa:	a0 f5       	brcc	.+104    	; 0x814 <__DATA_REGION_LENGTH__+0x14>
+		{
+			//display the character on LCD
+			LCD_WriteChar(key);
+     7ac:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+			
+			//to store the successive characters as decimal
+			num = num * 10 + (key-'0');
+     7b0:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     7b4:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     7b8:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     7bc:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     7c0:	88 0f       	add	r24, r24
+     7c2:	99 1f       	adc	r25, r25
+     7c4:	aa 1f       	adc	r26, r26
+     7c6:	bb 1f       	adc	r27, r27
+     7c8:	8c 01       	movw	r16, r24
+     7ca:	9d 01       	movw	r18, r26
+     7cc:	00 0f       	add	r16, r16
+     7ce:	11 1f       	adc	r17, r17
+     7d0:	22 1f       	adc	r18, r18
+     7d2:	33 1f       	adc	r19, r19
+     7d4:	00 0f       	add	r16, r16
+     7d6:	11 1f       	adc	r17, r17
+     7d8:	22 1f       	adc	r18, r18
+     7da:	33 1f       	adc	r19, r19
+     7dc:	ac 01       	movw	r20, r24
+     7de:	bd 01       	movw	r22, r26
+     7e0:	40 0f       	add	r20, r16
+     7e2:	51 1f       	adc	r21, r17
+     7e4:	62 1f       	adc	r22, r18
+     7e6:	73 1f       	adc	r23, r19
+     7e8:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     7ec:	30 e0       	ldi	r19, 0x00	; 0
+     7ee:	c9 01       	movw	r24, r18
+     7f0:	c0 97       	sbiw	r24, 0x30	; 48
+     7f2:	09 2e       	mov	r0, r25
+     7f4:	00 0c       	add	r0, r0
+     7f6:	aa 0b       	sbc	r26, r26
+     7f8:	bb 0b       	sbc	r27, r27
+     7fa:	84 0f       	add	r24, r20
+     7fc:	95 1f       	adc	r25, r21
+     7fe:	a6 1f       	adc	r26, r22
+     800:	b7 1f       	adc	r27, r23
+     802:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+     806:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+     80a:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+     80e:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+     812:	38 c0       	rjmp	.+112    	; 0x884 <__stack+0x25>
+		}
+		//checking if the current pressed key is '=' to convert the value of num
+		else if(key == '=')
+     814:	8d 33       	cpi	r24, 0x3D	; 61
+     816:	c1 f4       	brne	.+48     	; 0x848 <__DATA_REGION_LENGTH__+0x48>
+		{
+			
+			LCD_GoTo(1,2);
+     818:	62 e0       	ldi	r22, 0x02	; 2
+     81a:	81 e0       	ldi	r24, 0x01	; 1
+     81c:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			//convert number to Hexadecimal and display it on LCD
+			LCD_WriteHex(num);
+     820:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     824:	0e 94 20 02 	call	0x440	; 0x440 <LCD_WriteHex>
+			
+			LCD_WriteString("      ");
+     828:	8f e7       	ldi	r24, 0x7F	; 127
+     82a:	90 e0       	ldi	r25, 0x00	; 0
+     82c:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			flag_stat = 1;
+     830:	81 e0       	ldi	r24, 0x01	; 1
+     832:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+			num = 0;
+     836:	10 92 f2 00 	sts	0x00F2, r1	; 0x8000f2 <__data_end>
+     83a:	10 92 f3 00 	sts	0x00F3, r1	; 0x8000f3 <__data_end+0x1>
+     83e:	10 92 f4 00 	sts	0x00F4, r1	; 0x8000f4 <__data_end+0x2>
+     842:	10 92 f5 00 	sts	0x00F5, r1	; 0x8000f5 <__data_end+0x3>
+     846:	1e c0       	rjmp	.+60     	; 0x884 <__stack+0x25>
+			
+		}
+		//checking if the user wants to select another type of conversion
+		else if(key == 'C')
+     848:	83 34       	cpi	r24, 0x43	; 67
+     84a:	29 f4       	brne	.+10     	; 0x856 <__DATA_REGION_LENGTH__+0x56>
+		{
+			//to return to selection list
+			flag_stage = 0;
+     84c:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+				
+			//here return to the first use
+			flag_stat = 0;
+     850:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     854:	17 c0       	rjmp	.+46     	; 0x884 <__stack+0x25>
+		}
+		else
+		{
+			LCD_Clear();
+     856:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+			LCD_GoTo(0,0);
+     85a:	60 e0       	ldi	r22, 0x00	; 0
+     85c:	80 e0       	ldi	r24, 0x00	; 0
+     85e:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			LCD_WriteString("wrong number!!");
+     862:	86 e8       	ldi	r24, 0x86	; 134
+     864:	90 e0       	ldi	r25, 0x00	; 0
+     866:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+     86a:	2f ef       	ldi	r18, 0xFF	; 255
+     86c:	8e e9       	ldi	r24, 0x9E	; 158
+     86e:	94 e2       	ldi	r25, 0x24	; 36
+     870:	21 50       	subi	r18, 0x01	; 1
+     872:	80 40       	sbci	r24, 0x00	; 0
+     874:	90 40       	sbci	r25, 0x00	; 0
+     876:	e1 f7       	brne	.-8      	; 0x870 <__stack+0x11>
+     878:	00 c0       	rjmp	.+0      	; 0x87a <__stack+0x1b>
+     87a:	00 00       	nop
+			_delay_ms(1500);
+			flag_stage = 0;
+     87c:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			flag_stat = 0;
+     880:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+		}
+	}
+}
+     884:	1f 91       	pop	r17
+     886:	0f 91       	pop	r16
+     888:	08 95       	ret
+
+0000088a <binary_to_binary>:
+/***************************Convert from Binary to Binary*********************************/
+
+void binary_to_binary(void)
+{
+	/*checking the first execution  of the converting function*/
+	if(flag_stat == 0)
+     88a:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     88e:	81 11       	cpse	r24, r1
+     890:	16 c0       	rjmp	.+44     	; 0x8be <binary_to_binary+0x34>
+	{
+		LCD_GoTo(0,0);
+     892:	60 e0       	ldi	r22, 0x00	; 0
+     894:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("B:");
+     898:	84 e7       	ldi	r24, 0x74	; 116
+     89a:	90 e0       	ldi	r25, 0x00	; 0
+     89c:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(1,0);
+     8a0:	60 e0       	ldi	r22, 0x00	; 0
+     8a2:	81 e0       	ldi	r24, 0x01	; 1
+     8a4:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("B:");
+     8a8:	84 e7       	ldi	r24, 0x74	; 116
+     8aa:	90 e0       	ldi	r25, 0x00	; 0
+     8ac:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(0,2);
+     8b0:	62 e0       	ldi	r22, 0x02	; 2
+     8b2:	80 e0       	ldi	r24, 0x00	; 0
+     8b4:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		flag_stat = 1;
+     8b8:	81 e0       	ldi	r24, 0x01	; 1
+     8ba:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+	}
+	
+    /* Getting the current pressed key */
+	key = KEYPAD_GetKey();
+     8be:	0e 94 49 00 	call	0x92	; 0x92 <KEYPAD_GetKey>
+     8c2:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	if(key != NO_KEY)
+     8c6:	8e 34       	cpi	r24, 0x4E	; 78
+     8c8:	09 f4       	brne	.+2      	; 0x8cc <binary_to_binary+0x42>
+     8ca:	73 c0       	rjmp	.+230    	; 0x9b2 <binary_to_binary+0x128>
+	{
+		//checking for clearing any values in this location on LCD
+		if(flag_stat == 1)
+     8cc:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     8d0:	81 30       	cpi	r24, 0x01	; 1
+     8d2:	59 f4       	brne	.+22     	; 0x8ea <binary_to_binary+0x60>
+		{
+			//To clear any values in this location on LCD
+			LCD_WriteString("              ");
+     8d4:	87 e7       	ldi	r24, 0x77	; 119
+     8d6:	90 e0       	ldi	r25, 0x00	; 0
+     8d8:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			
+			LCD_GoTo(0,2);
+     8dc:	62 e0       	ldi	r22, 0x02	; 2
+     8de:	80 e0       	ldi	r24, 0x00	; 0
+     8e0:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			/*To make the upcoming execution of function is not first one*/
+			flag_stat = 2;
+     8e4:	82 e0       	ldi	r24, 0x02	; 2
+     8e6:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+		}
+		
+		//checking if the character  0 or 1
+		if(key >= '0' && key <= '1')
+     8ea:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     8ee:	90 ed       	ldi	r25, 0xD0	; 208
+     8f0:	98 0f       	add	r25, r24
+     8f2:	92 30       	cpi	r25, 0x02	; 2
+     8f4:	30 f5       	brcc	.+76     	; 0x942 <binary_to_binary+0xb8>
+		{
+			//display the character on LCD
+			LCD_WriteChar(key);
+     8f6:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+			
+			//to store the successive characters as decimal
+			num = num * 2 + (key-'0');
+     8fa:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     8fe:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     902:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     906:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     90a:	ac 01       	movw	r20, r24
+     90c:	bd 01       	movw	r22, r26
+     90e:	44 0f       	add	r20, r20
+     910:	55 1f       	adc	r21, r21
+     912:	66 1f       	adc	r22, r22
+     914:	77 1f       	adc	r23, r23
+     916:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     91a:	30 e0       	ldi	r19, 0x00	; 0
+     91c:	c9 01       	movw	r24, r18
+     91e:	c0 97       	sbiw	r24, 0x30	; 48
+     920:	09 2e       	mov	r0, r25
+     922:	00 0c       	add	r0, r0
+     924:	aa 0b       	sbc	r26, r26
+     926:	bb 0b       	sbc	r27, r27
+     928:	84 0f       	add	r24, r20
+     92a:	95 1f       	adc	r25, r21
+     92c:	a6 1f       	adc	r26, r22
+     92e:	b7 1f       	adc	r27, r23
+     930:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+     934:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+     938:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+     93c:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+     940:	08 95       	ret
+		}
+		
+		//checking if the current pressed key is '=' to convert the value of num
+		else if(key == '=')
+     942:	8d 33       	cpi	r24, 0x3D	; 61
+     944:	c1 f4       	brne	.+48     	; 0x976 <binary_to_binary+0xec>
+		{
+			LCD_GoTo(1,2);
+     946:	62 e0       	ldi	r22, 0x02	; 2
+     948:	81 e0       	ldi	r24, 0x01	; 1
+     94a:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			
+			//convert number to Binary and display it on LCD
+			LCD_WriteBinary(num);
+     94e:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     952:	0e 94 ec 01 	call	0x3d8	; 0x3d8 <LCD_WriteBinary>
+			
+			LCD_WriteString("         ");
+     956:	8c e7       	ldi	r24, 0x7C	; 124
+     958:	90 e0       	ldi	r25, 0x00	; 0
+     95a:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			flag_stat = 1;
+     95e:	81 e0       	ldi	r24, 0x01	; 1
+     960:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+			num = 0;
+     964:	10 92 f2 00 	sts	0x00F2, r1	; 0x8000f2 <__data_end>
+     968:	10 92 f3 00 	sts	0x00F3, r1	; 0x8000f3 <__data_end+0x1>
+     96c:	10 92 f4 00 	sts	0x00F4, r1	; 0x8000f4 <__data_end+0x2>
+     970:	10 92 f5 00 	sts	0x00F5, r1	; 0x8000f5 <__data_end+0x3>
+     974:	08 95       	ret
+			
+			
+		}
+		
+		//checking if the user wants to select another type of conversion
+		else if(key == 'C')
+     976:	83 34       	cpi	r24, 0x43	; 67
+     978:	29 f4       	brne	.+10     	; 0x984 <binary_to_binary+0xfa>
+		{
+			//to return to selection list
+			flag_stage = 0;
+     97a:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			
+			//here return to the first use
+			flag_stat = 0;
+     97e:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     982:	08 95       	ret
+		}
+		
+		/*If the user enter wrong value */
+		else{
+			LCD_Clear();
+     984:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+			LCD_GoTo(0,0);
+     988:	60 e0       	ldi	r22, 0x00	; 0
+     98a:	80 e0       	ldi	r24, 0x00	; 0
+     98c:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			LCD_WriteString("wrong number!!");
+     990:	86 e8       	ldi	r24, 0x86	; 134
+     992:	90 e0       	ldi	r25, 0x00	; 0
+     994:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+     998:	2f ef       	ldi	r18, 0xFF	; 255
+     99a:	8e e9       	ldi	r24, 0x9E	; 158
+     99c:	94 e2       	ldi	r25, 0x24	; 36
+     99e:	21 50       	subi	r18, 0x01	; 1
+     9a0:	80 40       	sbci	r24, 0x00	; 0
+     9a2:	90 40       	sbci	r25, 0x00	; 0
+     9a4:	e1 f7       	brne	.-8      	; 0x99e <binary_to_binary+0x114>
+     9a6:	00 c0       	rjmp	.+0      	; 0x9a8 <binary_to_binary+0x11e>
+     9a8:	00 00       	nop
+			_delay_ms(1500);
+			flag_stage = 0;
+     9aa:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			flag_stat = 0;
+     9ae:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     9b2:	08 95       	ret
+
+000009b4 <binary_to_decimal>:
+
+/********************************Convert from Binary to Decimal***********/
+void binary_to_decimal(void)
+{
+	/*checking the first execution  of the converting function*/
+	if(flag_stat == 0)
+     9b4:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     9b8:	81 11       	cpse	r24, r1
+     9ba:	16 c0       	rjmp	.+44     	; 0x9e8 <binary_to_decimal+0x34>
+	{
+		LCD_GoTo(0,0);
+     9bc:	60 e0       	ldi	r22, 0x00	; 0
+     9be:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("B:");
+     9c2:	84 e7       	ldi	r24, 0x74	; 116
+     9c4:	90 e0       	ldi	r25, 0x00	; 0
+     9c6:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(1,0);
+     9ca:	60 e0       	ldi	r22, 0x00	; 0
+     9cc:	81 e0       	ldi	r24, 0x01	; 1
+     9ce:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("D:");
+     9d2:	81 e7       	ldi	r24, 0x71	; 113
+     9d4:	90 e0       	ldi	r25, 0x00	; 0
+     9d6:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(0,2);
+     9da:	62 e0       	ldi	r22, 0x02	; 2
+     9dc:	80 e0       	ldi	r24, 0x00	; 0
+     9de:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		flag_stat = 1;
+     9e2:	81 e0       	ldi	r24, 0x01	; 1
+     9e4:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+	}
+	
+    /* Getting the current pressed key */
+	key = KEYPAD_GetKey();
+     9e8:	0e 94 49 00 	call	0x92	; 0x92 <KEYPAD_GetKey>
+     9ec:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	if(key != NO_KEY)
+     9f0:	8e 34       	cpi	r24, 0x4E	; 78
+     9f2:	09 f4       	brne	.+2      	; 0x9f6 <binary_to_decimal+0x42>
+     9f4:	79 c0       	rjmp	.+242    	; 0xae8 <binary_to_decimal+0x134>
+	{
+		//checking for clearing any values in this location on LCD
+		if(flag_stat == 1)
+     9f6:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     9fa:	81 30       	cpi	r24, 0x01	; 1
+     9fc:	59 f4       	brne	.+22     	; 0xa14 <binary_to_decimal+0x60>
+		{
+			//To clear any values in this location on LCD
+			LCD_WriteString("              ");
+     9fe:	87 e7       	ldi	r24, 0x77	; 119
+     a00:	90 e0       	ldi	r25, 0x00	; 0
+     a02:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			
+			LCD_GoTo(0,2);
+     a06:	62 e0       	ldi	r22, 0x02	; 2
+     a08:	80 e0       	ldi	r24, 0x00	; 0
+     a0a:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			/*To make the upcoming execution of function is not first one*/
+			flag_stat = 2;
+     a0e:	82 e0       	ldi	r24, 0x02	; 2
+     a10:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+		}
+		
+		//checking if the character  0 or 1
+		if(key >= '0' && key <= '1')
+     a14:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     a18:	90 ed       	ldi	r25, 0xD0	; 208
+     a1a:	98 0f       	add	r25, r24
+     a1c:	92 30       	cpi	r25, 0x02	; 2
+     a1e:	30 f5       	brcc	.+76     	; 0xa6c <binary_to_decimal+0xb8>
+		{
+			//display the character on LCD
+			LCD_WriteChar(key);
+     a20:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+			
+			//to store the successive characters as decimal
+			num = num * 2 + (key-'0');
+     a24:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     a28:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     a2c:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     a30:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     a34:	ac 01       	movw	r20, r24
+     a36:	bd 01       	movw	r22, r26
+     a38:	44 0f       	add	r20, r20
+     a3a:	55 1f       	adc	r21, r21
+     a3c:	66 1f       	adc	r22, r22
+     a3e:	77 1f       	adc	r23, r23
+     a40:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     a44:	30 e0       	ldi	r19, 0x00	; 0
+     a46:	c9 01       	movw	r24, r18
+     a48:	c0 97       	sbiw	r24, 0x30	; 48
+     a4a:	09 2e       	mov	r0, r25
+     a4c:	00 0c       	add	r0, r0
+     a4e:	aa 0b       	sbc	r26, r26
+     a50:	bb 0b       	sbc	r27, r27
+     a52:	84 0f       	add	r24, r20
+     a54:	95 1f       	adc	r25, r21
+     a56:	a6 1f       	adc	r26, r22
+     a58:	b7 1f       	adc	r27, r23
+     a5a:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+     a5e:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+     a62:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+     a66:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+     a6a:	08 95       	ret
+		}
+		
+		//checking if the current pressed key is '=' to convert the value of num
+		else if(key == '=')
+     a6c:	8d 33       	cpi	r24, 0x3D	; 61
+     a6e:	f1 f4       	brne	.+60     	; 0xaac <binary_to_decimal+0xf8>
+		{	
+			LCD_GoTo(1,2);
+     a70:	62 e0       	ldi	r22, 0x02	; 2
+     a72:	81 e0       	ldi	r24, 0x01	; 1
+     a74:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			
+			//convert number to Decimal and display it on LCD
+			LCD_WriteNumber(num);
+     a78:	60 91 f2 00 	lds	r22, 0x00F2	; 0x8000f2 <__data_end>
+     a7c:	70 91 f3 00 	lds	r23, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     a80:	80 91 f4 00 	lds	r24, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     a84:	90 91 f5 00 	lds	r25, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     a88:	0e 94 89 01 	call	0x312	; 0x312 <LCD_WriteNumber>
+			
+			LCD_WriteString("         ");
+     a8c:	8c e7       	ldi	r24, 0x7C	; 124
+     a8e:	90 e0       	ldi	r25, 0x00	; 0
+     a90:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			flag_stat = 1;
+     a94:	81 e0       	ldi	r24, 0x01	; 1
+     a96:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+			num = 0;
+     a9a:	10 92 f2 00 	sts	0x00F2, r1	; 0x8000f2 <__data_end>
+     a9e:	10 92 f3 00 	sts	0x00F3, r1	; 0x8000f3 <__data_end+0x1>
+     aa2:	10 92 f4 00 	sts	0x00F4, r1	; 0x8000f4 <__data_end+0x2>
+     aa6:	10 92 f5 00 	sts	0x00F5, r1	; 0x8000f5 <__data_end+0x3>
+     aaa:	08 95       	ret
+		}
+		
+		//checking if the user wants to select another type of conversion
+		else if(key == 'C')
+     aac:	83 34       	cpi	r24, 0x43	; 67
+     aae:	29 f4       	brne	.+10     	; 0xaba <binary_to_decimal+0x106>
+		{
+			//to return to selection list
+			flag_stage = 0;
+     ab0:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			
+			//here return to the first use
+			flag_stat = 0;
+     ab4:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     ab8:	08 95       	ret
+		}
+		
+		/*If the user enter wrong value */
+		else{
+			LCD_Clear();
+     aba:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+			LCD_GoTo(0,0);
+     abe:	60 e0       	ldi	r22, 0x00	; 0
+     ac0:	80 e0       	ldi	r24, 0x00	; 0
+     ac2:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			LCD_WriteString("wrong number!!");
+     ac6:	86 e8       	ldi	r24, 0x86	; 134
+     ac8:	90 e0       	ldi	r25, 0x00	; 0
+     aca:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+     ace:	2f ef       	ldi	r18, 0xFF	; 255
+     ad0:	8e e9       	ldi	r24, 0x9E	; 158
+     ad2:	94 e2       	ldi	r25, 0x24	; 36
+     ad4:	21 50       	subi	r18, 0x01	; 1
+     ad6:	80 40       	sbci	r24, 0x00	; 0
+     ad8:	90 40       	sbci	r25, 0x00	; 0
+     ada:	e1 f7       	brne	.-8      	; 0xad4 <binary_to_decimal+0x120>
+     adc:	00 c0       	rjmp	.+0      	; 0xade <binary_to_decimal+0x12a>
+     ade:	00 00       	nop
+			_delay_ms(1500);
+			flag_stage = 0;
+     ae0:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			flag_stat = 0;
+     ae4:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     ae8:	08 95       	ret
+
+00000aea <binary_to_HEX>:
+
+/*************************Convert from Binary to Hexadecimal*********/
+void binary_to_HEX(void)
+{
+	/*checking the first execution  of the converting function*/
+	if(flag_stat == 0)
+     aea:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     aee:	81 11       	cpse	r24, r1
+     af0:	16 c0       	rjmp	.+44     	; 0xb1e <binary_to_HEX+0x34>
+	{
+		LCD_GoTo(0,0);
+     af2:	60 e0       	ldi	r22, 0x00	; 0
+     af4:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("B:");
+     af8:	84 e7       	ldi	r24, 0x74	; 116
+     afa:	90 e0       	ldi	r25, 0x00	; 0
+     afc:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(1,0);
+     b00:	60 e0       	ldi	r22, 0x00	; 0
+     b02:	81 e0       	ldi	r24, 0x01	; 1
+     b04:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("H:");
+     b08:	85 e9       	ldi	r24, 0x95	; 149
+     b0a:	90 e0       	ldi	r25, 0x00	; 0
+     b0c:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(0,2);
+     b10:	62 e0       	ldi	r22, 0x02	; 2
+     b12:	80 e0       	ldi	r24, 0x00	; 0
+     b14:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		flag_stat = 1;
+     b18:	81 e0       	ldi	r24, 0x01	; 1
+     b1a:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+	}
+	
+      /* Getting the current pressed key */
+	key = KEYPAD_GetKey();
+     b1e:	0e 94 49 00 	call	0x92	; 0x92 <KEYPAD_GetKey>
+     b22:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	if(key != NO_KEY)
+     b26:	8e 34       	cpi	r24, 0x4E	; 78
+     b28:	09 f4       	brne	.+2      	; 0xb2c <binary_to_HEX+0x42>
+     b2a:	73 c0       	rjmp	.+230    	; 0xc12 <binary_to_HEX+0x128>
+	{
+	   //checking for clearing any values in this location on LCD
+	   if(flag_stat == 1)
+     b2c:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     b30:	81 30       	cpi	r24, 0x01	; 1
+     b32:	59 f4       	brne	.+22     	; 0xb4a <binary_to_HEX+0x60>
+	   {
+		   //To clear any values in this location on LCD
+		  LCD_WriteString("              ");
+     b34:	87 e7       	ldi	r24, 0x77	; 119
+     b36:	90 e0       	ldi	r25, 0x00	; 0
+     b38:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		
+		  LCD_GoTo(0,2);
+     b3c:	62 e0       	ldi	r22, 0x02	; 2
+     b3e:	80 e0       	ldi	r24, 0x00	; 0
+     b40:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		  /*To make the upcoming execution of function is not first one*/
+		   flag_stat = 2;
+     b44:	82 e0       	ldi	r24, 0x02	; 2
+     b46:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+	   }
+	
+	   //checking if the character  0 or 1
+		if(key >= '0' && key <= '1')
+     b4a:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     b4e:	90 ed       	ldi	r25, 0xD0	; 208
+     b50:	98 0f       	add	r25, r24
+     b52:	92 30       	cpi	r25, 0x02	; 2
+     b54:	30 f5       	brcc	.+76     	; 0xba2 <binary_to_HEX+0xb8>
+		{
+			//display the character on LCD
+			LCD_WriteChar(key);
+     b56:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+			
+			//to store the successive characters as decimal
+			num = num * 2 + (key-'0');
+     b5a:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     b5e:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     b62:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     b66:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     b6a:	ac 01       	movw	r20, r24
+     b6c:	bd 01       	movw	r22, r26
+     b6e:	44 0f       	add	r20, r20
+     b70:	55 1f       	adc	r21, r21
+     b72:	66 1f       	adc	r22, r22
+     b74:	77 1f       	adc	r23, r23
+     b76:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     b7a:	30 e0       	ldi	r19, 0x00	; 0
+     b7c:	c9 01       	movw	r24, r18
+     b7e:	c0 97       	sbiw	r24, 0x30	; 48
+     b80:	09 2e       	mov	r0, r25
+     b82:	00 0c       	add	r0, r0
+     b84:	aa 0b       	sbc	r26, r26
+     b86:	bb 0b       	sbc	r27, r27
+     b88:	84 0f       	add	r24, r20
+     b8a:	95 1f       	adc	r25, r21
+     b8c:	a6 1f       	adc	r26, r22
+     b8e:	b7 1f       	adc	r27, r23
+     b90:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+     b94:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+     b98:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+     b9c:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+     ba0:	08 95       	ret
+		}
+		
+		//checking if the current pressed key is '=' to convert the value of num
+		else if(key == '=')
+     ba2:	8d 33       	cpi	r24, 0x3D	; 61
+     ba4:	c1 f4       	brne	.+48     	; 0xbd6 <binary_to_HEX+0xec>
+		{
+			LCD_GoTo(1,2);
+     ba6:	62 e0       	ldi	r22, 0x02	; 2
+     ba8:	81 e0       	ldi	r24, 0x01	; 1
+     baa:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			
+			//convert number to Hexadecimal and display it on LCD
+			LCD_WriteHex(num);
+     bae:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     bb2:	0e 94 20 02 	call	0x440	; 0x440 <LCD_WriteHex>
+			
+			LCD_WriteString("         ");
+     bb6:	8c e7       	ldi	r24, 0x7C	; 124
+     bb8:	90 e0       	ldi	r25, 0x00	; 0
+     bba:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			flag_stat = 1;
+     bbe:	81 e0       	ldi	r24, 0x01	; 1
+     bc0:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+			num = 0;
+     bc4:	10 92 f2 00 	sts	0x00F2, r1	; 0x8000f2 <__data_end>
+     bc8:	10 92 f3 00 	sts	0x00F3, r1	; 0x8000f3 <__data_end+0x1>
+     bcc:	10 92 f4 00 	sts	0x00F4, r1	; 0x8000f4 <__data_end+0x2>
+     bd0:	10 92 f5 00 	sts	0x00F5, r1	; 0x8000f5 <__data_end+0x3>
+     bd4:	08 95       	ret
+		}
+		
+		//checking if the user wants to select another type of conversion
+		else if(key == 'C')
+     bd6:	83 34       	cpi	r24, 0x43	; 67
+     bd8:	29 f4       	brne	.+10     	; 0xbe4 <binary_to_HEX+0xfa>
+		{
+			//to return to selection list
+			flag_stage = 0;
+     bda:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			
+			//here return to the first use
+			flag_stat = 0;
+     bde:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     be2:	08 95       	ret
+		}
+		
+		/*If the user enter wrong value */
+		else{
+			LCD_Clear();
+     be4:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+			LCD_GoTo(0,0);
+     be8:	60 e0       	ldi	r22, 0x00	; 0
+     bea:	80 e0       	ldi	r24, 0x00	; 0
+     bec:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			LCD_WriteString("wrong number!!");
+     bf0:	86 e8       	ldi	r24, 0x86	; 134
+     bf2:	90 e0       	ldi	r25, 0x00	; 0
+     bf4:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+     bf8:	2f ef       	ldi	r18, 0xFF	; 255
+     bfa:	8e e9       	ldi	r24, 0x9E	; 158
+     bfc:	94 e2       	ldi	r25, 0x24	; 36
+     bfe:	21 50       	subi	r18, 0x01	; 1
+     c00:	80 40       	sbci	r24, 0x00	; 0
+     c02:	90 40       	sbci	r25, 0x00	; 0
+     c04:	e1 f7       	brne	.-8      	; 0xbfe <binary_to_HEX+0x114>
+     c06:	00 c0       	rjmp	.+0      	; 0xc08 <binary_to_HEX+0x11e>
+     c08:	00 00       	nop
+			_delay_ms(1500);
+			flag_stage = 0;
+     c0a:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			flag_stat = 0;
+     c0e:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     c12:	08 95       	ret
+
+00000c14 <HEX_to_decimal>:
+
+/*************************Convert from Hexadecimal to Decimal*********/
+void HEX_to_decimal(void)
+{
+	/*checking the first execution  of the converting function*/
+	if(flag_stat == 0)
+     c14:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     c18:	81 11       	cpse	r24, r1
+     c1a:	16 c0       	rjmp	.+44     	; 0xc48 <HEX_to_decimal+0x34>
+	{
+		LCD_GoTo(0,0);
+     c1c:	60 e0       	ldi	r22, 0x00	; 0
+     c1e:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("H:");
+     c22:	85 e9       	ldi	r24, 0x95	; 149
+     c24:	90 e0       	ldi	r25, 0x00	; 0
+     c26:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(1,0);
+     c2a:	60 e0       	ldi	r22, 0x00	; 0
+     c2c:	81 e0       	ldi	r24, 0x01	; 1
+     c2e:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("D:");
+     c32:	81 e7       	ldi	r24, 0x71	; 113
+     c34:	90 e0       	ldi	r25, 0x00	; 0
+     c36:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(0,2);
+     c3a:	62 e0       	ldi	r22, 0x02	; 2
+     c3c:	80 e0       	ldi	r24, 0x00	; 0
+     c3e:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		flag_stat = 1;
+     c42:	81 e0       	ldi	r24, 0x01	; 1
+     c44:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+	}
+	
+    /* Getting the current pressed key */
+	key = KEYPAD_GetKey();
+     c48:	0e 94 49 00 	call	0x92	; 0x92 <KEYPAD_GetKey>
+     c4c:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	if(key != NO_KEY)
+     c50:	8e 34       	cpi	r24, 0x4E	; 78
+     c52:	09 f4       	brne	.+2      	; 0xc56 <HEX_to_decimal+0x42>
+     c54:	c1 c0       	rjmp	.+386    	; 0xdd8 <HEX_to_decimal+0x1c4>
+	{
+		//checking for clearing any values in this location on LCD
+		if(flag_stat == 1)
+     c56:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     c5a:	81 30       	cpi	r24, 0x01	; 1
+     c5c:	59 f4       	brne	.+22     	; 0xc74 <HEX_to_decimal+0x60>
+		{
+			//To clear any values in this location on LCD
+			LCD_WriteString("              ");
+     c5e:	87 e7       	ldi	r24, 0x77	; 119
+     c60:	90 e0       	ldi	r25, 0x00	; 0
+     c62:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			
+			LCD_GoTo(0,2);
+     c66:	62 e0       	ldi	r22, 0x02	; 2
+     c68:	80 e0       	ldi	r24, 0x00	; 0
+     c6a:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			/*To make the upcoming execution of function is not first one*/
+			flag_stat = 2;
+     c6e:	82 e0       	ldi	r24, 0x02	; 2
+     c70:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+		}
+		
+		//checking if the character  0 to 9 or a to f
+		if(key >= '0' && key <= '9' || key >= 'a' && key <= 'f')
+     c74:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     c78:	90 ed       	ldi	r25, 0xD0	; 208
+     c7a:	98 0f       	add	r25, r24
+     c7c:	9a 30       	cpi	r25, 0x0A	; 10
+     c7e:	28 f0       	brcs	.+10     	; 0xc8a <HEX_to_decimal+0x76>
+     c80:	9f e9       	ldi	r25, 0x9F	; 159
+     c82:	98 0f       	add	r25, r24
+     c84:	96 30       	cpi	r25, 0x06	; 6
+     c86:	08 f0       	brcs	.+2      	; 0xc8a <HEX_to_decimal+0x76>
+     c88:	69 c0       	rjmp	.+210    	; 0xd5c <HEX_to_decimal+0x148>
+		{
+			//display the character on LCD
+			LCD_WriteChar(key);
+     c8a:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+			
+			if( key >= '0' && key <= '9')
+     c8e:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     c92:	80 ed       	ldi	r24, 0xD0	; 208
+     c94:	82 0f       	add	r24, r18
+     c96:	8a 30       	cpi	r24, 0x0A	; 10
+     c98:	68 f5       	brcc	.+90     	; 0xcf4 <HEX_to_decimal+0xe0>
+			{
+				//to store the successive characters as decimal
+				num = num * 16 + (key-'0');
+     c9a:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     c9e:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     ca2:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     ca6:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     caa:	88 0f       	add	r24, r24
+     cac:	99 1f       	adc	r25, r25
+     cae:	aa 1f       	adc	r26, r26
+     cb0:	bb 1f       	adc	r27, r27
+     cb2:	88 0f       	add	r24, r24
+     cb4:	99 1f       	adc	r25, r25
+     cb6:	aa 1f       	adc	r26, r26
+     cb8:	bb 1f       	adc	r27, r27
+     cba:	ac 01       	movw	r20, r24
+     cbc:	bd 01       	movw	r22, r26
+     cbe:	44 0f       	add	r20, r20
+     cc0:	55 1f       	adc	r21, r21
+     cc2:	66 1f       	adc	r22, r22
+     cc4:	77 1f       	adc	r23, r23
+     cc6:	44 0f       	add	r20, r20
+     cc8:	55 1f       	adc	r21, r21
+     cca:	66 1f       	adc	r22, r22
+     ccc:	77 1f       	adc	r23, r23
+     cce:	82 2f       	mov	r24, r18
+     cd0:	90 e0       	ldi	r25, 0x00	; 0
+     cd2:	c0 97       	sbiw	r24, 0x30	; 48
+     cd4:	09 2e       	mov	r0, r25
+     cd6:	00 0c       	add	r0, r0
+     cd8:	aa 0b       	sbc	r26, r26
+     cda:	bb 0b       	sbc	r27, r27
+     cdc:	84 0f       	add	r24, r20
+     cde:	95 1f       	adc	r25, r21
+     ce0:	a6 1f       	adc	r26, r22
+     ce2:	b7 1f       	adc	r27, r23
+     ce4:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+     ce8:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+     cec:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+     cf0:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+			}
+			if (key >= 'a' && key <= 'f')
+     cf4:	8f e9       	ldi	r24, 0x9F	; 159
+     cf6:	82 0f       	add	r24, r18
+     cf8:	86 30       	cpi	r24, 0x06	; 6
+     cfa:	08 f0       	brcs	.+2      	; 0xcfe <HEX_to_decimal+0xea>
+     cfc:	6d c0       	rjmp	.+218    	; 0xdd8 <HEX_to_decimal+0x1c4>
+			{
+				//to store the successive characters as decimal
+				num = num * 16 + ((key-97) + 10);
+     cfe:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     d02:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     d06:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     d0a:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     d0e:	88 0f       	add	r24, r24
+     d10:	99 1f       	adc	r25, r25
+     d12:	aa 1f       	adc	r26, r26
+     d14:	bb 1f       	adc	r27, r27
+     d16:	88 0f       	add	r24, r24
+     d18:	99 1f       	adc	r25, r25
+     d1a:	aa 1f       	adc	r26, r26
+     d1c:	bb 1f       	adc	r27, r27
+     d1e:	ac 01       	movw	r20, r24
+     d20:	bd 01       	movw	r22, r26
+     d22:	44 0f       	add	r20, r20
+     d24:	55 1f       	adc	r21, r21
+     d26:	66 1f       	adc	r22, r22
+     d28:	77 1f       	adc	r23, r23
+     d2a:	44 0f       	add	r20, r20
+     d2c:	55 1f       	adc	r21, r21
+     d2e:	66 1f       	adc	r22, r22
+     d30:	77 1f       	adc	r23, r23
+     d32:	30 e0       	ldi	r19, 0x00	; 0
+     d34:	c9 01       	movw	r24, r18
+     d36:	87 55       	subi	r24, 0x57	; 87
+     d38:	91 09       	sbc	r25, r1
+     d3a:	09 2e       	mov	r0, r25
+     d3c:	00 0c       	add	r0, r0
+     d3e:	aa 0b       	sbc	r26, r26
+     d40:	bb 0b       	sbc	r27, r27
+     d42:	84 0f       	add	r24, r20
+     d44:	95 1f       	adc	r25, r21
+     d46:	a6 1f       	adc	r26, r22
+     d48:	b7 1f       	adc	r27, r23
+     d4a:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+     d4e:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+     d52:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+     d56:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+     d5a:	08 95       	ret
+			}
+		}
+		
+		//checking if the current pressed key is '=' to convert the value of num
+		else if(key == '=')
+     d5c:	8d 33       	cpi	r24, 0x3D	; 61
+     d5e:	f1 f4       	brne	.+60     	; 0xd9c <HEX_to_decimal+0x188>
+		{
+			LCD_GoTo(1,2);
+     d60:	62 e0       	ldi	r22, 0x02	; 2
+     d62:	81 e0       	ldi	r24, 0x01	; 1
+     d64:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			
+			//convert number to decimal and display it on LCD
+			LCD_WriteNumber(num);
+     d68:	60 91 f2 00 	lds	r22, 0x00F2	; 0x8000f2 <__data_end>
+     d6c:	70 91 f3 00 	lds	r23, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     d70:	80 91 f4 00 	lds	r24, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     d74:	90 91 f5 00 	lds	r25, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     d78:	0e 94 89 01 	call	0x312	; 0x312 <LCD_WriteNumber>
+			
+			LCD_WriteString("         ");
+     d7c:	8c e7       	ldi	r24, 0x7C	; 124
+     d7e:	90 e0       	ldi	r25, 0x00	; 0
+     d80:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			flag_stat = 1;
+     d84:	81 e0       	ldi	r24, 0x01	; 1
+     d86:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+			num = 0;
+     d8a:	10 92 f2 00 	sts	0x00F2, r1	; 0x8000f2 <__data_end>
+     d8e:	10 92 f3 00 	sts	0x00F3, r1	; 0x8000f3 <__data_end+0x1>
+     d92:	10 92 f4 00 	sts	0x00F4, r1	; 0x8000f4 <__data_end+0x2>
+     d96:	10 92 f5 00 	sts	0x00F5, r1	; 0x8000f5 <__data_end+0x3>
+     d9a:	08 95       	ret
+			
+		}
+		
+		//checking if the user wants to select another type of conversion
+		else if(key == 'C')
+     d9c:	83 34       	cpi	r24, 0x43	; 67
+     d9e:	29 f4       	brne	.+10     	; 0xdaa <HEX_to_decimal+0x196>
+		{
+			//to return to selection list
+			flag_stage = 0;
+     da0:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			
+			//here return to the first use
+			flag_stat = 0;
+     da4:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     da8:	08 95       	ret
+		}
+		
+		/*If the user enter wrong value */
+		else
+		{
+			LCD_Clear();
+     daa:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+			LCD_GoTo(0,0);
+     dae:	60 e0       	ldi	r22, 0x00	; 0
+     db0:	80 e0       	ldi	r24, 0x00	; 0
+     db2:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			LCD_WriteString("wrong number!!");
+     db6:	86 e8       	ldi	r24, 0x86	; 134
+     db8:	90 e0       	ldi	r25, 0x00	; 0
+     dba:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+     dbe:	2f ef       	ldi	r18, 0xFF	; 255
+     dc0:	8e e9       	ldi	r24, 0x9E	; 158
+     dc2:	94 e2       	ldi	r25, 0x24	; 36
+     dc4:	21 50       	subi	r18, 0x01	; 1
+     dc6:	80 40       	sbci	r24, 0x00	; 0
+     dc8:	90 40       	sbci	r25, 0x00	; 0
+     dca:	e1 f7       	brne	.-8      	; 0xdc4 <HEX_to_decimal+0x1b0>
+     dcc:	00 c0       	rjmp	.+0      	; 0xdce <HEX_to_decimal+0x1ba>
+     dce:	00 00       	nop
+			_delay_ms(1500);
+			flag_stage = 0;
+     dd0:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			flag_stat = 0;
+     dd4:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     dd8:	08 95       	ret
+
+00000dda <HEX_to_binary>:
+/*************************Convert from Hexadecimal to Binary*********/
+
+void HEX_to_binary(void)
+{
+	/*checking the first execution  of the converting function*/
+	if(flag_stat == 0)
+     dda:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     dde:	81 11       	cpse	r24, r1
+     de0:	16 c0       	rjmp	.+44     	; 0xe0e <HEX_to_binary+0x34>
+	{
+		LCD_GoTo(0,0);
+     de2:	60 e0       	ldi	r22, 0x00	; 0
+     de4:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("H:");
+     de8:	85 e9       	ldi	r24, 0x95	; 149
+     dea:	90 e0       	ldi	r25, 0x00	; 0
+     dec:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(1,0);
+     df0:	60 e0       	ldi	r22, 0x00	; 0
+     df2:	81 e0       	ldi	r24, 0x01	; 1
+     df4:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("B:");
+     df8:	84 e7       	ldi	r24, 0x74	; 116
+     dfa:	90 e0       	ldi	r25, 0x00	; 0
+     dfc:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(0,2);
+     e00:	62 e0       	ldi	r22, 0x02	; 2
+     e02:	80 e0       	ldi	r24, 0x00	; 0
+     e04:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		flag_stat = 1;
+     e08:	81 e0       	ldi	r24, 0x01	; 1
+     e0a:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+	}
+	
+    /* Getting the current pressed key */
+	key = KEYPAD_GetKey();
+     e0e:	0e 94 49 00 	call	0x92	; 0x92 <KEYPAD_GetKey>
+     e12:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	if(key != NO_KEY)
+     e16:	8e 34       	cpi	r24, 0x4E	; 78
+     e18:	09 f4       	brne	.+2      	; 0xe1c <HEX_to_binary+0x42>
+     e1a:	bb c0       	rjmp	.+374    	; 0xf92 <HEX_to_binary+0x1b8>
+	{
+		//checking for clearing any values in this location on LCD
+		if(flag_stat == 1)
+     e1c:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     e20:	81 30       	cpi	r24, 0x01	; 1
+     e22:	59 f4       	brne	.+22     	; 0xe3a <HEX_to_binary+0x60>
+		{
+			//To clear any values in this location on LCD
+			LCD_WriteString("              ");
+     e24:	87 e7       	ldi	r24, 0x77	; 119
+     e26:	90 e0       	ldi	r25, 0x00	; 0
+     e28:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			
+			LCD_GoTo(0,2);
+     e2c:	62 e0       	ldi	r22, 0x02	; 2
+     e2e:	80 e0       	ldi	r24, 0x00	; 0
+     e30:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			/*To make the upcoming execution of function is not first one*/
+			flag_stat = 2;
+     e34:	82 e0       	ldi	r24, 0x02	; 2
+     e36:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+		}
+		
+		//checking if the character  0 to 9 or a to f
+		if(key >= '0' && key <= '9' || key >= 'a' && key <= 'f')
+     e3a:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     e3e:	90 ed       	ldi	r25, 0xD0	; 208
+     e40:	98 0f       	add	r25, r24
+     e42:	9a 30       	cpi	r25, 0x0A	; 10
+     e44:	28 f0       	brcs	.+10     	; 0xe50 <HEX_to_binary+0x76>
+     e46:	9f e9       	ldi	r25, 0x9F	; 159
+     e48:	98 0f       	add	r25, r24
+     e4a:	96 30       	cpi	r25, 0x06	; 6
+     e4c:	08 f0       	brcs	.+2      	; 0xe50 <HEX_to_binary+0x76>
+     e4e:	69 c0       	rjmp	.+210    	; 0xf22 <HEX_to_binary+0x148>
+		{
+			//display the character on LCD
+			LCD_WriteChar(key);
+     e50:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+			
+		   if( key >= '0' && key <= '9')
+     e54:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     e58:	80 ed       	ldi	r24, 0xD0	; 208
+     e5a:	82 0f       	add	r24, r18
+     e5c:	8a 30       	cpi	r24, 0x0A	; 10
+     e5e:	68 f5       	brcc	.+90     	; 0xeba <HEX_to_binary+0xe0>
+		   {
+			    //to store the successive characters as decimal
+			    num = num * 16 + (key-'0');
+     e60:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     e64:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     e68:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     e6c:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     e70:	88 0f       	add	r24, r24
+     e72:	99 1f       	adc	r25, r25
+     e74:	aa 1f       	adc	r26, r26
+     e76:	bb 1f       	adc	r27, r27
+     e78:	88 0f       	add	r24, r24
+     e7a:	99 1f       	adc	r25, r25
+     e7c:	aa 1f       	adc	r26, r26
+     e7e:	bb 1f       	adc	r27, r27
+     e80:	ac 01       	movw	r20, r24
+     e82:	bd 01       	movw	r22, r26
+     e84:	44 0f       	add	r20, r20
+     e86:	55 1f       	adc	r21, r21
+     e88:	66 1f       	adc	r22, r22
+     e8a:	77 1f       	adc	r23, r23
+     e8c:	44 0f       	add	r20, r20
+     e8e:	55 1f       	adc	r21, r21
+     e90:	66 1f       	adc	r22, r22
+     e92:	77 1f       	adc	r23, r23
+     e94:	82 2f       	mov	r24, r18
+     e96:	90 e0       	ldi	r25, 0x00	; 0
+     e98:	c0 97       	sbiw	r24, 0x30	; 48
+     e9a:	09 2e       	mov	r0, r25
+     e9c:	00 0c       	add	r0, r0
+     e9e:	aa 0b       	sbc	r26, r26
+     ea0:	bb 0b       	sbc	r27, r27
+     ea2:	84 0f       	add	r24, r20
+     ea4:	95 1f       	adc	r25, r21
+     ea6:	a6 1f       	adc	r26, r22
+     ea8:	b7 1f       	adc	r27, r23
+     eaa:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+     eae:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+     eb2:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+     eb6:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+		   }
+		   if (key >= 'a' && key <= 'f')
+     eba:	8f e9       	ldi	r24, 0x9F	; 159
+     ebc:	82 0f       	add	r24, r18
+     ebe:	86 30       	cpi	r24, 0x06	; 6
+     ec0:	08 f0       	brcs	.+2      	; 0xec4 <HEX_to_binary+0xea>
+     ec2:	67 c0       	rjmp	.+206    	; 0xf92 <HEX_to_binary+0x1b8>
+		   {
+			   //to store the successive characters as decimal
+		 	   num = num * 16 + ((key-97) + 10);
+     ec4:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     ec8:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+     ecc:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+     ed0:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+     ed4:	88 0f       	add	r24, r24
+     ed6:	99 1f       	adc	r25, r25
+     ed8:	aa 1f       	adc	r26, r26
+     eda:	bb 1f       	adc	r27, r27
+     edc:	88 0f       	add	r24, r24
+     ede:	99 1f       	adc	r25, r25
+     ee0:	aa 1f       	adc	r26, r26
+     ee2:	bb 1f       	adc	r27, r27
+     ee4:	ac 01       	movw	r20, r24
+     ee6:	bd 01       	movw	r22, r26
+     ee8:	44 0f       	add	r20, r20
+     eea:	55 1f       	adc	r21, r21
+     eec:	66 1f       	adc	r22, r22
+     eee:	77 1f       	adc	r23, r23
+     ef0:	44 0f       	add	r20, r20
+     ef2:	55 1f       	adc	r21, r21
+     ef4:	66 1f       	adc	r22, r22
+     ef6:	77 1f       	adc	r23, r23
+     ef8:	30 e0       	ldi	r19, 0x00	; 0
+     efa:	c9 01       	movw	r24, r18
+     efc:	87 55       	subi	r24, 0x57	; 87
+     efe:	91 09       	sbc	r25, r1
+     f00:	09 2e       	mov	r0, r25
+     f02:	00 0c       	add	r0, r0
+     f04:	aa 0b       	sbc	r26, r26
+     f06:	bb 0b       	sbc	r27, r27
+     f08:	84 0f       	add	r24, r20
+     f0a:	95 1f       	adc	r25, r21
+     f0c:	a6 1f       	adc	r26, r22
+     f0e:	b7 1f       	adc	r27, r23
+     f10:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+     f14:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+     f18:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+     f1c:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+     f20:	08 95       	ret
+		   }
+		}
+		
+		//checking if the current pressed key is '=' to convert the value of num
+		else if(key == '=')
+     f22:	8d 33       	cpi	r24, 0x3D	; 61
+     f24:	c1 f4       	brne	.+48     	; 0xf56 <HEX_to_binary+0x17c>
+		{
+			LCD_GoTo(1,2);
+     f26:	62 e0       	ldi	r22, 0x02	; 2
+     f28:	81 e0       	ldi	r24, 0x01	; 1
+     f2a:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			
+			//convert number to Binary and display it on LCD
+			LCD_WriteBinary(num);
+     f2e:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+     f32:	0e 94 ec 01 	call	0x3d8	; 0x3d8 <LCD_WriteBinary>
+			
+			LCD_WriteString("         ");
+     f36:	8c e7       	ldi	r24, 0x7C	; 124
+     f38:	90 e0       	ldi	r25, 0x00	; 0
+     f3a:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			flag_stat = 1;
+     f3e:	81 e0       	ldi	r24, 0x01	; 1
+     f40:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+			num = 0;
+     f44:	10 92 f2 00 	sts	0x00F2, r1	; 0x8000f2 <__data_end>
+     f48:	10 92 f3 00 	sts	0x00F3, r1	; 0x8000f3 <__data_end+0x1>
+     f4c:	10 92 f4 00 	sts	0x00F4, r1	; 0x8000f4 <__data_end+0x2>
+     f50:	10 92 f5 00 	sts	0x00F5, r1	; 0x8000f5 <__data_end+0x3>
+     f54:	08 95       	ret
+		}
+		
+		//checking if the user wants to select another type of conversion
+		else if(key == 'C')
+     f56:	83 34       	cpi	r24, 0x43	; 67
+     f58:	29 f4       	brne	.+10     	; 0xf64 <HEX_to_binary+0x18a>
+		{
+			//to return to selection list
+			flag_stage = 0;
+     f5a:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			
+			//here return to the first use
+			flag_stat = 0;
+     f5e:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     f62:	08 95       	ret
+		}
+		
+		/*If the user enter wrong value */
+		else
+		{
+			LCD_Clear();
+     f64:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+			LCD_GoTo(0,0);
+     f68:	60 e0       	ldi	r22, 0x00	; 0
+     f6a:	80 e0       	ldi	r24, 0x00	; 0
+     f6c:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			LCD_WriteString("wrong number!!");
+     f70:	86 e8       	ldi	r24, 0x86	; 134
+     f72:	90 e0       	ldi	r25, 0x00	; 0
+     f74:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+     f78:	2f ef       	ldi	r18, 0xFF	; 255
+     f7a:	8e e9       	ldi	r24, 0x9E	; 158
+     f7c:	94 e2       	ldi	r25, 0x24	; 36
+     f7e:	21 50       	subi	r18, 0x01	; 1
+     f80:	80 40       	sbci	r24, 0x00	; 0
+     f82:	90 40       	sbci	r25, 0x00	; 0
+     f84:	e1 f7       	brne	.-8      	; 0xf7e <HEX_to_binary+0x1a4>
+     f86:	00 c0       	rjmp	.+0      	; 0xf88 <HEX_to_binary+0x1ae>
+     f88:	00 00       	nop
+			_delay_ms(1500);
+			flag_stage = 0;
+     f8a:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			flag_stat = 0;
+     f8e:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+     f92:	08 95       	ret
+
+00000f94 <HEX_to_HEX>:
+/*************************Convert from Hexadecimal to  Hexadecimal*********/
+
+void HEX_to_HEX(void)
+{
+	/*checking the first execution  of the converting function*/
+	if(flag_stat == 0)
+     f94:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     f98:	81 11       	cpse	r24, r1
+     f9a:	16 c0       	rjmp	.+44     	; 0xfc8 <HEX_to_HEX+0x34>
+	{
+		LCD_GoTo(0,0);
+     f9c:	60 e0       	ldi	r22, 0x00	; 0
+     f9e:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("H:");
+     fa2:	85 e9       	ldi	r24, 0x95	; 149
+     fa4:	90 e0       	ldi	r25, 0x00	; 0
+     fa6:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(1,0);
+     faa:	60 e0       	ldi	r22, 0x00	; 0
+     fac:	81 e0       	ldi	r24, 0x01	; 1
+     fae:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		LCD_WriteString("H:");
+     fb2:	85 e9       	ldi	r24, 0x95	; 149
+     fb4:	90 e0       	ldi	r25, 0x00	; 0
+     fb6:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+		LCD_GoTo(0,2);
+     fba:	62 e0       	ldi	r22, 0x02	; 2
+     fbc:	80 e0       	ldi	r24, 0x00	; 0
+     fbe:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+		flag_stat = 1;
+     fc2:	81 e0       	ldi	r24, 0x01	; 1
+     fc4:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+	}
+	
+   /* Getting the current pressed key */
+	key = KEYPAD_GetKey();
+     fc8:	0e 94 49 00 	call	0x92	; 0x92 <KEYPAD_GetKey>
+     fcc:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+	if(key != NO_KEY)
+     fd0:	8e 34       	cpi	r24, 0x4E	; 78
+     fd2:	09 f4       	brne	.+2      	; 0xfd6 <HEX_to_HEX+0x42>
+     fd4:	bb c0       	rjmp	.+374    	; 0x114c <HEX_to_HEX+0x1b8>
+	{
+		//checking for clearing any values in this location on LCD
+		if(flag_stat == 1)
+     fd6:	80 91 f6 00 	lds	r24, 0x00F6	; 0x8000f6 <flag_stat>
+     fda:	81 30       	cpi	r24, 0x01	; 1
+     fdc:	59 f4       	brne	.+22     	; 0xff4 <HEX_to_HEX+0x60>
+		{
+			//To clear any values in this location on LCD
+			LCD_WriteString("              ");
+     fde:	87 e7       	ldi	r24, 0x77	; 119
+     fe0:	90 e0       	ldi	r25, 0x00	; 0
+     fe2:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			
+			LCD_GoTo(0,2);
+     fe6:	62 e0       	ldi	r22, 0x02	; 2
+     fe8:	80 e0       	ldi	r24, 0x00	; 0
+     fea:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			/*To make the upcoming execution of function is not first one*/
+			flag_stat = 2;
+     fee:	82 e0       	ldi	r24, 0x02	; 2
+     ff0:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+		}
+		
+		//checking if the character  0 to 9 or a to f
+		if(key >= '0' && key <= '9' || key >= 'a' && key <= 'f')
+     ff4:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+     ff8:	90 ed       	ldi	r25, 0xD0	; 208
+     ffa:	98 0f       	add	r25, r24
+     ffc:	9a 30       	cpi	r25, 0x0A	; 10
+     ffe:	28 f0       	brcs	.+10     	; 0x100a <HEX_to_HEX+0x76>
+    1000:	9f e9       	ldi	r25, 0x9F	; 159
+    1002:	98 0f       	add	r25, r24
+    1004:	96 30       	cpi	r25, 0x06	; 6
+    1006:	08 f0       	brcs	.+2      	; 0x100a <HEX_to_HEX+0x76>
+    1008:	69 c0       	rjmp	.+210    	; 0x10dc <HEX_to_HEX+0x148>
+		{
+			//display the character on LCD
+			LCD_WriteChar(key);
+    100a:	0e 94 73 01 	call	0x2e6	; 0x2e6 <LCD_WriteChar>
+			
+			if(key >= '0' && key <= '9')
+    100e:	20 91 60 00 	lds	r18, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+    1012:	80 ed       	ldi	r24, 0xD0	; 208
+    1014:	82 0f       	add	r24, r18
+    1016:	8a 30       	cpi	r24, 0x0A	; 10
+    1018:	68 f5       	brcc	.+90     	; 0x1074 <HEX_to_HEX+0xe0>
+			{
+				//to store the successive characters as decimal
+				num = num * 16 + (key-'0');
+    101a:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+    101e:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+    1022:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+    1026:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+    102a:	88 0f       	add	r24, r24
+    102c:	99 1f       	adc	r25, r25
+    102e:	aa 1f       	adc	r26, r26
+    1030:	bb 1f       	adc	r27, r27
+    1032:	88 0f       	add	r24, r24
+    1034:	99 1f       	adc	r25, r25
+    1036:	aa 1f       	adc	r26, r26
+    1038:	bb 1f       	adc	r27, r27
+    103a:	ac 01       	movw	r20, r24
+    103c:	bd 01       	movw	r22, r26
+    103e:	44 0f       	add	r20, r20
+    1040:	55 1f       	adc	r21, r21
+    1042:	66 1f       	adc	r22, r22
+    1044:	77 1f       	adc	r23, r23
+    1046:	44 0f       	add	r20, r20
+    1048:	55 1f       	adc	r21, r21
+    104a:	66 1f       	adc	r22, r22
+    104c:	77 1f       	adc	r23, r23
+    104e:	82 2f       	mov	r24, r18
+    1050:	90 e0       	ldi	r25, 0x00	; 0
+    1052:	c0 97       	sbiw	r24, 0x30	; 48
+    1054:	09 2e       	mov	r0, r25
+    1056:	00 0c       	add	r0, r0
+    1058:	aa 0b       	sbc	r26, r26
+    105a:	bb 0b       	sbc	r27, r27
+    105c:	84 0f       	add	r24, r20
+    105e:	95 1f       	adc	r25, r21
+    1060:	a6 1f       	adc	r26, r22
+    1062:	b7 1f       	adc	r27, r23
+    1064:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+    1068:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+    106c:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+    1070:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+			}
+			if (key >= 'a' && key <= 'f')
+    1074:	8f e9       	ldi	r24, 0x9F	; 159
+    1076:	82 0f       	add	r24, r18
+    1078:	86 30       	cpi	r24, 0x06	; 6
+    107a:	08 f0       	brcs	.+2      	; 0x107e <HEX_to_HEX+0xea>
+    107c:	67 c0       	rjmp	.+206    	; 0x114c <HEX_to_HEX+0x1b8>
+			{
+				//to store the successive characters as decimal
+				num = num * 16 +((key-97) + 10);
+    107e:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+    1082:	90 91 f3 00 	lds	r25, 0x00F3	; 0x8000f3 <__data_end+0x1>
+    1086:	a0 91 f4 00 	lds	r26, 0x00F4	; 0x8000f4 <__data_end+0x2>
+    108a:	b0 91 f5 00 	lds	r27, 0x00F5	; 0x8000f5 <__data_end+0x3>
+    108e:	88 0f       	add	r24, r24
+    1090:	99 1f       	adc	r25, r25
+    1092:	aa 1f       	adc	r26, r26
+    1094:	bb 1f       	adc	r27, r27
+    1096:	88 0f       	add	r24, r24
+    1098:	99 1f       	adc	r25, r25
+    109a:	aa 1f       	adc	r26, r26
+    109c:	bb 1f       	adc	r27, r27
+    109e:	ac 01       	movw	r20, r24
+    10a0:	bd 01       	movw	r22, r26
+    10a2:	44 0f       	add	r20, r20
+    10a4:	55 1f       	adc	r21, r21
+    10a6:	66 1f       	adc	r22, r22
+    10a8:	77 1f       	adc	r23, r23
+    10aa:	44 0f       	add	r20, r20
+    10ac:	55 1f       	adc	r21, r21
+    10ae:	66 1f       	adc	r22, r22
+    10b0:	77 1f       	adc	r23, r23
+    10b2:	30 e0       	ldi	r19, 0x00	; 0
+    10b4:	c9 01       	movw	r24, r18
+    10b6:	87 55       	subi	r24, 0x57	; 87
+    10b8:	91 09       	sbc	r25, r1
+    10ba:	09 2e       	mov	r0, r25
+    10bc:	00 0c       	add	r0, r0
+    10be:	aa 0b       	sbc	r26, r26
+    10c0:	bb 0b       	sbc	r27, r27
+    10c2:	84 0f       	add	r24, r20
+    10c4:	95 1f       	adc	r25, r21
+    10c6:	a6 1f       	adc	r26, r22
+    10c8:	b7 1f       	adc	r27, r23
+    10ca:	80 93 f2 00 	sts	0x00F2, r24	; 0x8000f2 <__data_end>
+    10ce:	90 93 f3 00 	sts	0x00F3, r25	; 0x8000f3 <__data_end+0x1>
+    10d2:	a0 93 f4 00 	sts	0x00F4, r26	; 0x8000f4 <__data_end+0x2>
+    10d6:	b0 93 f5 00 	sts	0x00F5, r27	; 0x8000f5 <__data_end+0x3>
+    10da:	08 95       	ret
+			}
+		}
+		
+		//checking if the current pressed key is '=' to convert the value of num
+		else if(key == '=')
+    10dc:	8d 33       	cpi	r24, 0x3D	; 61
+    10de:	c1 f4       	brne	.+48     	; 0x1110 <HEX_to_HEX+0x17c>
+		{
+			LCD_GoTo(1,2);
+    10e0:	62 e0       	ldi	r22, 0x02	; 2
+    10e2:	81 e0       	ldi	r24, 0x01	; 1
+    10e4:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			//convert number to Hexadecimal and display it on LCD
+			LCD_WriteHex(num);
+    10e8:	80 91 f2 00 	lds	r24, 0x00F2	; 0x8000f2 <__data_end>
+    10ec:	0e 94 20 02 	call	0x440	; 0x440 <LCD_WriteHex>
+			
+			LCD_WriteString("         ");
+    10f0:	8c e7       	ldi	r24, 0x7C	; 124
+    10f2:	90 e0       	ldi	r25, 0x00	; 0
+    10f4:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			flag_stat = 1;
+    10f8:	81 e0       	ldi	r24, 0x01	; 1
+    10fa:	80 93 f6 00 	sts	0x00F6, r24	; 0x8000f6 <flag_stat>
+			num = 0;	
+    10fe:	10 92 f2 00 	sts	0x00F2, r1	; 0x8000f2 <__data_end>
+    1102:	10 92 f3 00 	sts	0x00F3, r1	; 0x8000f3 <__data_end+0x1>
+    1106:	10 92 f4 00 	sts	0x00F4, r1	; 0x8000f4 <__data_end+0x2>
+    110a:	10 92 f5 00 	sts	0x00F5, r1	; 0x8000f5 <__data_end+0x3>
+    110e:	08 95       	ret
+		}
+		
+		//checking if the user wants to select another type of conversion
+		else if(key == 'C')
+    1110:	83 34       	cpi	r24, 0x43	; 67
+    1112:	29 f4       	brne	.+10     	; 0x111e <HEX_to_HEX+0x18a>
+		{
+			//to return to selection list
+			flag_stage = 0;
+    1114:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			
+			//here return to the first use
+			flag_stat = 0;
+    1118:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+    111c:	08 95       	ret
+		}
+		
+		/*If the user enter wrong value */
+		else{
+			LCD_Clear();
+    111e:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+			LCD_GoTo(0,0);
+    1122:	60 e0       	ldi	r22, 0x00	; 0
+    1124:	80 e0       	ldi	r24, 0x00	; 0
+    1126:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			LCD_WriteString("wrong number!!");
+    112a:	86 e8       	ldi	r24, 0x86	; 134
+    112c:	90 e0       	ldi	r25, 0x00	; 0
+    112e:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+    1132:	2f ef       	ldi	r18, 0xFF	; 255
+    1134:	8e e9       	ldi	r24, 0x9E	; 158
+    1136:	94 e2       	ldi	r25, 0x24	; 36
+    1138:	21 50       	subi	r18, 0x01	; 1
+    113a:	80 40       	sbci	r24, 0x00	; 0
+    113c:	90 40       	sbci	r25, 0x00	; 0
+    113e:	e1 f7       	brne	.-8      	; 0x1138 <HEX_to_HEX+0x1a4>
+    1140:	00 c0       	rjmp	.+0      	; 0x1142 <HEX_to_HEX+0x1ae>
+    1142:	00 00       	nop
+			_delay_ms(1500);
+			flag_stage = 0;
+    1144:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+			flag_stat = 0;
+    1148:	10 92 f6 00 	sts	0x00F6, r1	; 0x8000f6 <flag_stat>
+    114c:	08 95       	ret
+
+0000114e <main>:
+
+/**************************************************************************************/
+
+int main(void)
+{
+   DIO_Init();//Initializing DIO
+    114e:	0e 94 fb 0a 	call	0x15f6	; 0x15f6 <DIO_Init>
+   LCD_Init();//Initializing LCD  
+    1152:	0e 94 54 01 	call	0x2a8	; 0x2a8 <LCD_Init>
+   LCD_GoTo(0,6);
+    1156:	66 e0       	ldi	r22, 0x06	; 6
+    1158:	80 e0       	ldi	r24, 0x00	; 0
+    115a:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+   LCD_WriteString("hello");
+    115e:	88 e9       	ldi	r24, 0x98	; 152
+    1160:	90 e0       	ldi	r25, 0x00	; 0
+    1162:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+    1166:	2f ef       	ldi	r18, 0xFF	; 255
+    1168:	89 e6       	ldi	r24, 0x69	; 105
+    116a:	98 e1       	ldi	r25, 0x18	; 24
+    116c:	21 50       	subi	r18, 0x01	; 1
+    116e:	80 40       	sbci	r24, 0x00	; 0
+    1170:	90 40       	sbci	r25, 0x00	; 0
+    1172:	e1 f7       	brne	.-8      	; 0x116c <main+0x1e>
+    1174:	00 c0       	rjmp	.+0      	; 0x1176 <main+0x28>
+    1176:	00 00       	nop
+   _delay_ms(1000);
+   LCD_Clear();
+    1178:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+    while (1) 
+    {
+		/*****************************************************************/
+		/*Checking of the first selection type of Number System for converting from it */
+		if(flag_stage == 0)
+    117c:	80 91 f9 00 	lds	r24, 0x00F9	; 0x8000f9 <flag_stage>
+    1180:	81 11       	cpse	r24, r1
+    1182:	37 c0       	rjmp	.+110    	; 0x11f2 <main+0xa4>
+		{
+			LCD_GoTo(0,0);
+    1184:	60 e0       	ldi	r22, 0x00	; 0
+    1186:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			LCD_WriteString("convert from");
+    118a:	8e e9       	ldi	r24, 0x9E	; 158
+    118c:	90 e0       	ldi	r25, 0x00	; 0
+    118e:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			LCD_GoTo(1,0);
+    1192:	60 e0       	ldi	r22, 0x00	; 0
+    1194:	81 e0       	ldi	r24, 0x01	; 1
+    1196:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			/*Display on LCD the selections 
+			1 for Decimal
+			2 for Binary 
+			3 for Hexadecimal
+			*/
+			LCD_WriteString("1D  2B   3H");
+    119a:	8b ea       	ldi	r24, 0xAB	; 171
+    119c:	90 e0       	ldi	r25, 0x00	; 0
+    119e:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			
+			/* Getting the current pressed key */
+			key = KEYPAD_GetKey();
+    11a2:	0e 94 49 00 	call	0x92	; 0x92 <KEYPAD_GetKey>
+    11a6:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+			
+			if(key != NO_KEY)
+    11aa:	8e 34       	cpi	r24, 0x4E	; 78
+    11ac:	11 f1       	breq	.+68     	; 0x11f2 <main+0xa4>
+			{
+				/* Checking the value of keypad if from 1 to 3*/
+				if(key >= '1' && key <= '3')
+    11ae:	9f ec       	ldi	r25, 0xCF	; 207
+    11b0:	98 0f       	add	r25, r24
+    11b2:	93 30       	cpi	r25, 0x03	; 3
+    11b4:	38 f4       	brcc	.+14     	; 0x11c4 <main+0x76>
+				{
+					/*Store the first selection*/
+					x = key - '0';
+    11b6:	80 53       	subi	r24, 0x30	; 48
+    11b8:	80 93 f8 00 	sts	0x00F8, r24	; 0x8000f8 <x>
+					
+					/*To move to the second selection type of Number System for converting to it */
+					flag_stage = 1;
+    11bc:	81 e0       	ldi	r24, 0x01	; 1
+    11be:	80 93 f9 00 	sts	0x00F9, r24	; 0x8000f9 <flag_stage>
+    11c2:	17 c0       	rjmp	.+46     	; 0x11f2 <main+0xa4>
+				}
+				
+				/*If the user enter wrong value */
+				else
+				{
+					LCD_Clear();
+    11c4:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+					LCD_GoTo(0,0);
+    11c8:	60 e0       	ldi	r22, 0x00	; 0
+    11ca:	80 e0       	ldi	r24, 0x00	; 0
+    11cc:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+					LCD_WriteString("wrong number !!");
+    11d0:	87 eb       	ldi	r24, 0xB7	; 183
+    11d2:	90 e0       	ldi	r25, 0x00	; 0
+    11d4:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+    11d8:	2f ef       	ldi	r18, 0xFF	; 255
+    11da:	8e e9       	ldi	r24, 0x9E	; 158
+    11dc:	94 e2       	ldi	r25, 0x24	; 36
+    11de:	21 50       	subi	r18, 0x01	; 1
+    11e0:	80 40       	sbci	r24, 0x00	; 0
+    11e2:	90 40       	sbci	r25, 0x00	; 0
+    11e4:	e1 f7       	brne	.-8      	; 0x11de <main+0x90>
+    11e6:	00 c0       	rjmp	.+0      	; 0x11e8 <main+0x9a>
+    11e8:	00 00       	nop
+					_delay_ms(1500);
+					LCD_Clear();
+    11ea:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+					flag_stage = 0;
+    11ee:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+		}
+		
+		
+		/*****************************************************************/
+	   /*Checking of the second selection type of Number System  for converting to it */
+		if(flag_stage == 1)
+    11f2:	80 91 f9 00 	lds	r24, 0x00F9	; 0x8000f9 <flag_stage>
+    11f6:	81 30       	cpi	r24, 0x01	; 1
+    11f8:	c1 f5       	brne	.+112    	; 0x126a <main+0x11c>
+		{
+			LCD_GoTo(0,0);
+    11fa:	60 e0       	ldi	r22, 0x00	; 0
+    11fc:	80 e0       	ldi	r24, 0x00	; 0
+    11fe:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			LCD_WriteString("convert to");
+    1202:	87 ec       	ldi	r24, 0xC7	; 199
+    1204:	90 e0       	ldi	r25, 0x00	; 0
+    1206:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			LCD_GoTo(1,0);
+    120a:	60 e0       	ldi	r22, 0x00	; 0
+    120c:	81 e0       	ldi	r24, 0x01	; 1
+    120e:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+			/*Display on LCD the selections 
+			1 for Decimal
+			2 for Binary 
+			3 for Hexadecimal
+			*/
+			LCD_WriteString("1D  2B   3H");
+    1212:	8b ea       	ldi	r24, 0xAB	; 171
+    1214:	90 e0       	ldi	r25, 0x00	; 0
+    1216:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+			
+			/* Getting the current pressed key */
+			key = KEYPAD_GetKey();
+    121a:	0e 94 49 00 	call	0x92	; 0x92 <KEYPAD_GetKey>
+    121e:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+			if(key != NO_KEY)
+    1222:	8e 34       	cpi	r24, 0x4E	; 78
+    1224:	11 f1       	breq	.+68     	; 0x126a <main+0x11c>
+			{
+				/* Checking the value of keypad if from 1 to 3*/
+				if(key >= '1' && key <= '3')
+    1226:	9f ec       	ldi	r25, 0xCF	; 207
+    1228:	98 0f       	add	r25, r24
+    122a:	93 30       	cpi	r25, 0x03	; 3
+    122c:	38 f4       	brcc	.+14     	; 0x123c <main+0xee>
+				{
+			    	/*Store the second selection*/
+					y = key - '0';
+    122e:	80 53       	subi	r24, 0x30	; 48
+    1230:	80 93 f7 00 	sts	0x00F7, r24	; 0x8000f7 <y>
+					
+				/*To move to the third stage that contain the different
+				Converting Functions of number systems
+				and Execution one of them*/
+					flag_stage = 2;
+    1234:	82 e0       	ldi	r24, 0x02	; 2
+    1236:	80 93 f9 00 	sts	0x00F9, r24	; 0x8000f9 <flag_stage>
+    123a:	17 c0       	rjmp	.+46     	; 0x126a <main+0x11c>
+				}
+				
+				/*If the user enter wrong value */
+				else
+				{
+					LCD_Clear();
+    123c:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+					LCD_GoTo(0,0);
+    1240:	60 e0       	ldi	r22, 0x00	; 0
+    1242:	80 e0       	ldi	r24, 0x00	; 0
+    1244:	0e 94 0e 02 	call	0x41c	; 0x41c <LCD_GoTo>
+					LCD_WriteString("wrong number !!");
+    1248:	87 eb       	ldi	r24, 0xB7	; 183
+    124a:	90 e0       	ldi	r25, 0x00	; 0
+    124c:	0e 94 76 01 	call	0x2ec	; 0x2ec <LCD_WriteString>
+    1250:	2f ef       	ldi	r18, 0xFF	; 255
+    1252:	8e e9       	ldi	r24, 0x9E	; 158
+    1254:	94 e2       	ldi	r25, 0x24	; 36
+    1256:	21 50       	subi	r18, 0x01	; 1
+    1258:	80 40       	sbci	r24, 0x00	; 0
+    125a:	90 40       	sbci	r25, 0x00	; 0
+    125c:	e1 f7       	brne	.-8      	; 0x1256 <main+0x108>
+    125e:	00 c0       	rjmp	.+0      	; 0x1260 <main+0x112>
+    1260:	00 00       	nop
+					_delay_ms(1500);
+					LCD_Clear();
+    1262:	0e 94 1c 02 	call	0x438	; 0x438 <LCD_Clear>
+					flag_stage = 0;
+    1266:	10 92 f9 00 	sts	0x00F9, r1	; 0x8000f9 <flag_stage>
+/***********************************************************************/
+  /*Checking of the third stage
+   that contain Converting Functions of number systems
+   and Execution one of them
+   */ 
+		if(flag_stage == 2)
+    126a:	80 91 f9 00 	lds	r24, 0x00F9	; 0x8000f9 <flag_stage>
+    126e:	82 30       	cpi	r24, 0x02	; 2
+    1270:	09 f0       	breq	.+2      	; 0x1274 <main+0x126>
+    1272:	84 cf       	rjmp	.-248    	; 0x117c <main+0x2e>
+		{
+			
+			switch(x)
+    1274:	80 91 f8 00 	lds	r24, 0x00F8	; 0x8000f8 <x>
+    1278:	82 30       	cpi	r24, 0x02	; 2
+    127a:	b9 f0       	breq	.+46     	; 0x12aa <main+0x15c>
+    127c:	83 30       	cpi	r24, 0x03	; 3
+    127e:	39 f1       	breq	.+78     	; 0x12ce <main+0x180>
+    1280:	81 30       	cpi	r24, 0x01	; 1
+    1282:	09 f0       	breq	.+2      	; 0x1286 <main+0x138>
+    1284:	7b cf       	rjmp	.-266    	; 0x117c <main+0x2e>
+			{
+				case 1:
+				switch(y)
+    1286:	80 91 f7 00 	lds	r24, 0x00F7	; 0x8000f7 <y>
+    128a:	82 30       	cpi	r24, 0x02	; 2
+    128c:	41 f0       	breq	.+16     	; 0x129e <main+0x150>
+    128e:	83 30       	cpi	r24, 0x03	; 3
+    1290:	49 f0       	breq	.+18     	; 0x12a4 <main+0x156>
+    1292:	81 30       	cpi	r24, 0x01	; 1
+    1294:	09 f0       	breq	.+2      	; 0x1298 <main+0x14a>
+    1296:	72 cf       	rjmp	.-284    	; 0x117c <main+0x2e>
+				{
+					/*Covert from Decimal_to_Decimal*/
+					case 1:
+					decimal_to_decimal();
+    1298:	0e 94 ed 02 	call	0x5da	; 0x5da <decimal_to_decimal>
+					break;
+    129c:	6f cf       	rjmp	.-290    	; 0x117c <main+0x2e>
+					
+					/*Covert from Decimal_to_Binary*/
+					case 2:
+					decimal_to_binary();
+    129e:	0e 94 3e 02 	call	0x47c	; 0x47c <decimal_to_binary>
+					break;
+    12a2:	6c cf       	rjmp	.-296    	; 0x117c <main+0x2e>
+					
+					/*Covert from Decimal_to_Hexadecimal*/
+					case 3:
+					decimal_to_HEX();
+    12a4:	0e 94 9e 03 	call	0x73c	; 0x73c <decimal_to_HEX>
+					break;
+    12a8:	69 cf       	rjmp	.-302    	; 0x117c <main+0x2e>
+				}
+				break;
+				
+				case 2:
+				switch(y)
+    12aa:	80 91 f7 00 	lds	r24, 0x00F7	; 0x8000f7 <y>
+    12ae:	82 30       	cpi	r24, 0x02	; 2
+    12b0:	41 f0       	breq	.+16     	; 0x12c2 <main+0x174>
+    12b2:	83 30       	cpi	r24, 0x03	; 3
+    12b4:	49 f0       	breq	.+18     	; 0x12c8 <main+0x17a>
+    12b6:	81 30       	cpi	r24, 0x01	; 1
+    12b8:	09 f0       	breq	.+2      	; 0x12bc <main+0x16e>
+    12ba:	60 cf       	rjmp	.-320    	; 0x117c <main+0x2e>
+				{
+					/*Covert from Binary_to_Decimal*/
+					case 1:
+					binary_to_decimal();
+    12bc:	0e 94 da 04 	call	0x9b4	; 0x9b4 <binary_to_decimal>
+					break;
+    12c0:	5d cf       	rjmp	.-326    	; 0x117c <main+0x2e>
+					
+					/*Covert from Binary_to_Binary*/
+					case 2:
+					binary_to_binary();
+    12c2:	0e 94 45 04 	call	0x88a	; 0x88a <binary_to_binary>
+					break;
+    12c6:	5a cf       	rjmp	.-332    	; 0x117c <main+0x2e>
+					
+					/*Covert from Binary_to_Hexadecimal*/
+					case 3:
+					binary_to_HEX();
+    12c8:	0e 94 75 05 	call	0xaea	; 0xaea <binary_to_HEX>
+					break;
+    12cc:	57 cf       	rjmp	.-338    	; 0x117c <main+0x2e>
+				}
+				break;
+				
+				case 3:
+				{
+					switch(y)
+    12ce:	80 91 f7 00 	lds	r24, 0x00F7	; 0x8000f7 <y>
+    12d2:	82 30       	cpi	r24, 0x02	; 2
+    12d4:	41 f0       	breq	.+16     	; 0x12e6 <main+0x198>
+    12d6:	83 30       	cpi	r24, 0x03	; 3
+    12d8:	49 f0       	breq	.+18     	; 0x12ec <main+0x19e>
+    12da:	81 30       	cpi	r24, 0x01	; 1
+    12dc:	09 f0       	breq	.+2      	; 0x12e0 <main+0x192>
+    12de:	4e cf       	rjmp	.-356    	; 0x117c <main+0x2e>
+					{
+						/*Covert from Hexadecimal_to_Decimal*/
+						case 1:
+						HEX_to_decimal();
+    12e0:	0e 94 0a 06 	call	0xc14	; 0xc14 <HEX_to_decimal>
+						break;
+    12e4:	4b cf       	rjmp	.-362    	; 0x117c <main+0x2e>
+						
+						/*Covert from Hexadecimal_to_Binary*/
+						case 2:
+						HEX_to_binary();
+    12e6:	0e 94 ed 06 	call	0xdda	; 0xdda <HEX_to_binary>
+						break;
+    12ea:	48 cf       	rjmp	.-368    	; 0x117c <main+0x2e>
+						
+						/*Covert from Hexadecimal_to_Hexadecimal*/
+						case 3:
+						HEX_to_HEX();
+    12ec:	0e 94 ca 07 	call	0xf94	; 0xf94 <HEX_to_HEX>
+						break;
+    12f0:	45 cf       	rjmp	.-374    	; 0x117c <main+0x2e>
+
+000012f2 <DIO_InitPin>:
+			break;
+			case PC:
+            PORTC=value;		 
+			break;
+			case PD:
+			PORTD=value;
+    12f2:	98 2f       	mov	r25, r24
+    12f4:	96 95       	lsr	r25
+    12f6:	96 95       	lsr	r25
+    12f8:	96 95       	lsr	r25
+    12fa:	87 70       	andi	r24, 0x07	; 7
+    12fc:	61 30       	cpi	r22, 0x01	; 1
+    12fe:	09 f4       	brne	.+2      	; 0x1302 <DIO_InitPin+0x10>
+    1300:	55 c0       	rjmp	.+170    	; 0x13ac <DIO_InitPin+0xba>
+    1302:	20 f0       	brcs	.+8      	; 0x130c <DIO_InitPin+0x1a>
+    1304:	62 30       	cpi	r22, 0x02	; 2
+    1306:	09 f4       	brne	.+2      	; 0x130a <DIO_InitPin+0x18>
+    1308:	a1 c0       	rjmp	.+322    	; 0x144c <DIO_InitPin+0x15a>
+    130a:	08 95       	ret
+    130c:	91 30       	cpi	r25, 0x01	; 1
+    130e:	c1 f0       	breq	.+48     	; 0x1340 <DIO_InitPin+0x4e>
+    1310:	28 f0       	brcs	.+10     	; 0x131c <DIO_InitPin+0x2a>
+    1312:	92 30       	cpi	r25, 0x02	; 2
+    1314:	39 f1       	breq	.+78     	; 0x1364 <DIO_InitPin+0x72>
+    1316:	93 30       	cpi	r25, 0x03	; 3
+    1318:	b9 f1       	breq	.+110    	; 0x1388 <DIO_InitPin+0x96>
+    131a:	08 95       	ret
+    131c:	4a b3       	in	r20, 0x1a	; 26
+    131e:	21 e0       	ldi	r18, 0x01	; 1
+    1320:	30 e0       	ldi	r19, 0x00	; 0
+    1322:	b9 01       	movw	r22, r18
+    1324:	02 c0       	rjmp	.+4      	; 0x132a <DIO_InitPin+0x38>
+    1326:	66 0f       	add	r22, r22
+    1328:	77 1f       	adc	r23, r23
+    132a:	8a 95       	dec	r24
+    132c:	e2 f7       	brpl	.-8      	; 0x1326 <DIO_InitPin+0x34>
+    132e:	cb 01       	movw	r24, r22
+    1330:	94 2f       	mov	r25, r20
+    1332:	98 2b       	or	r25, r24
+    1334:	9a bb       	out	0x1a, r25	; 26
+    1336:	9b b3       	in	r25, 0x1b	; 27
+    1338:	80 95       	com	r24
+    133a:	89 23       	and	r24, r25
+    133c:	8b bb       	out	0x1b, r24	; 27
+    133e:	08 95       	ret
+    1340:	47 b3       	in	r20, 0x17	; 23
+    1342:	21 e0       	ldi	r18, 0x01	; 1
+    1344:	30 e0       	ldi	r19, 0x00	; 0
+    1346:	b9 01       	movw	r22, r18
+    1348:	02 c0       	rjmp	.+4      	; 0x134e <DIO_InitPin+0x5c>
+    134a:	66 0f       	add	r22, r22
+    134c:	77 1f       	adc	r23, r23
+    134e:	8a 95       	dec	r24
+    1350:	e2 f7       	brpl	.-8      	; 0x134a <DIO_InitPin+0x58>
+    1352:	cb 01       	movw	r24, r22
+    1354:	94 2f       	mov	r25, r20
+    1356:	98 2b       	or	r25, r24
+    1358:	97 bb       	out	0x17, r25	; 23
+    135a:	98 b3       	in	r25, 0x18	; 24
+    135c:	80 95       	com	r24
+    135e:	89 23       	and	r24, r25
+    1360:	88 bb       	out	0x18, r24	; 24
+    1362:	08 95       	ret
+    1364:	44 b3       	in	r20, 0x14	; 20
+    1366:	21 e0       	ldi	r18, 0x01	; 1
+    1368:	30 e0       	ldi	r19, 0x00	; 0
+    136a:	b9 01       	movw	r22, r18
+    136c:	02 c0       	rjmp	.+4      	; 0x1372 <DIO_InitPin+0x80>
+    136e:	66 0f       	add	r22, r22
+    1370:	77 1f       	adc	r23, r23
+    1372:	8a 95       	dec	r24
+    1374:	e2 f7       	brpl	.-8      	; 0x136e <DIO_InitPin+0x7c>
+    1376:	cb 01       	movw	r24, r22
+    1378:	94 2f       	mov	r25, r20
+    137a:	98 2b       	or	r25, r24
+    137c:	94 bb       	out	0x14, r25	; 20
+    137e:	95 b3       	in	r25, 0x15	; 21
+    1380:	80 95       	com	r24
+    1382:	89 23       	and	r24, r25
+    1384:	85 bb       	out	0x15, r24	; 21
+    1386:	08 95       	ret
+    1388:	41 b3       	in	r20, 0x11	; 17
+    138a:	21 e0       	ldi	r18, 0x01	; 1
+    138c:	30 e0       	ldi	r19, 0x00	; 0
+    138e:	b9 01       	movw	r22, r18
+    1390:	02 c0       	rjmp	.+4      	; 0x1396 <DIO_InitPin+0xa4>
+    1392:	66 0f       	add	r22, r22
+    1394:	77 1f       	adc	r23, r23
+    1396:	8a 95       	dec	r24
+    1398:	e2 f7       	brpl	.-8      	; 0x1392 <DIO_InitPin+0xa0>
+    139a:	cb 01       	movw	r24, r22
+    139c:	94 2f       	mov	r25, r20
+    139e:	98 2b       	or	r25, r24
+    13a0:	91 bb       	out	0x11, r25	; 17
+    13a2:	92 b3       	in	r25, 0x12	; 18
+    13a4:	80 95       	com	r24
+    13a6:	89 23       	and	r24, r25
+    13a8:	82 bb       	out	0x12, r24	; 18
+    13aa:	08 95       	ret
+    13ac:	91 30       	cpi	r25, 0x01	; 1
+    13ae:	c1 f0       	breq	.+48     	; 0x13e0 <DIO_InitPin+0xee>
+    13b0:	28 f0       	brcs	.+10     	; 0x13bc <DIO_InitPin+0xca>
+    13b2:	92 30       	cpi	r25, 0x02	; 2
+    13b4:	39 f1       	breq	.+78     	; 0x1404 <DIO_InitPin+0x112>
+    13b6:	93 30       	cpi	r25, 0x03	; 3
+    13b8:	b9 f1       	breq	.+110    	; 0x1428 <DIO_InitPin+0x136>
+    13ba:	08 95       	ret
+    13bc:	4a b3       	in	r20, 0x1a	; 26
+    13be:	21 e0       	ldi	r18, 0x01	; 1
+    13c0:	30 e0       	ldi	r19, 0x00	; 0
+    13c2:	b9 01       	movw	r22, r18
+    13c4:	02 c0       	rjmp	.+4      	; 0x13ca <DIO_InitPin+0xd8>
+    13c6:	66 0f       	add	r22, r22
+    13c8:	77 1f       	adc	r23, r23
+    13ca:	8a 95       	dec	r24
+    13cc:	e2 f7       	brpl	.-8      	; 0x13c6 <DIO_InitPin+0xd4>
+    13ce:	cb 01       	movw	r24, r22
+    13d0:	80 95       	com	r24
+    13d2:	94 2f       	mov	r25, r20
+    13d4:	98 23       	and	r25, r24
+    13d6:	9a bb       	out	0x1a, r25	; 26
+    13d8:	9b b3       	in	r25, 0x1b	; 27
+    13da:	89 23       	and	r24, r25
+    13dc:	8b bb       	out	0x1b, r24	; 27
+    13de:	08 95       	ret
+    13e0:	47 b3       	in	r20, 0x17	; 23
+    13e2:	21 e0       	ldi	r18, 0x01	; 1
+    13e4:	30 e0       	ldi	r19, 0x00	; 0
+    13e6:	b9 01       	movw	r22, r18
+    13e8:	02 c0       	rjmp	.+4      	; 0x13ee <DIO_InitPin+0xfc>
+    13ea:	66 0f       	add	r22, r22
+    13ec:	77 1f       	adc	r23, r23
+    13ee:	8a 95       	dec	r24
+    13f0:	e2 f7       	brpl	.-8      	; 0x13ea <DIO_InitPin+0xf8>
+    13f2:	cb 01       	movw	r24, r22
+    13f4:	80 95       	com	r24
+    13f6:	94 2f       	mov	r25, r20
+    13f8:	98 23       	and	r25, r24
+    13fa:	97 bb       	out	0x17, r25	; 23
+    13fc:	98 b3       	in	r25, 0x18	; 24
+    13fe:	89 23       	and	r24, r25
+    1400:	88 bb       	out	0x18, r24	; 24
+    1402:	08 95       	ret
+    1404:	44 b3       	in	r20, 0x14	; 20
+    1406:	21 e0       	ldi	r18, 0x01	; 1
+    1408:	30 e0       	ldi	r19, 0x00	; 0
+    140a:	b9 01       	movw	r22, r18
+    140c:	02 c0       	rjmp	.+4      	; 0x1412 <DIO_InitPin+0x120>
+    140e:	66 0f       	add	r22, r22
+    1410:	77 1f       	adc	r23, r23
+    1412:	8a 95       	dec	r24
+    1414:	e2 f7       	brpl	.-8      	; 0x140e <DIO_InitPin+0x11c>
+    1416:	cb 01       	movw	r24, r22
+    1418:	80 95       	com	r24
+    141a:	94 2f       	mov	r25, r20
+    141c:	98 23       	and	r25, r24
+    141e:	94 bb       	out	0x14, r25	; 20
+    1420:	95 b3       	in	r25, 0x15	; 21
+    1422:	89 23       	and	r24, r25
+    1424:	85 bb       	out	0x15, r24	; 21
+    1426:	08 95       	ret
+    1428:	41 b3       	in	r20, 0x11	; 17
+    142a:	21 e0       	ldi	r18, 0x01	; 1
+    142c:	30 e0       	ldi	r19, 0x00	; 0
+    142e:	b9 01       	movw	r22, r18
+    1430:	02 c0       	rjmp	.+4      	; 0x1436 <DIO_InitPin+0x144>
+    1432:	66 0f       	add	r22, r22
+    1434:	77 1f       	adc	r23, r23
+    1436:	8a 95       	dec	r24
+    1438:	e2 f7       	brpl	.-8      	; 0x1432 <DIO_InitPin+0x140>
+    143a:	cb 01       	movw	r24, r22
+    143c:	80 95       	com	r24
+    143e:	94 2f       	mov	r25, r20
+    1440:	98 23       	and	r25, r24
+    1442:	91 bb       	out	0x11, r25	; 17
+    1444:	92 b3       	in	r25, 0x12	; 18
+    1446:	89 23       	and	r24, r25
+    1448:	82 bb       	out	0x12, r24	; 18
+    144a:	08 95       	ret
+    144c:	91 30       	cpi	r25, 0x01	; 1
+    144e:	c1 f0       	breq	.+48     	; 0x1480 <DIO_InitPin+0x18e>
+    1450:	28 f0       	brcs	.+10     	; 0x145c <DIO_InitPin+0x16a>
+    1452:	92 30       	cpi	r25, 0x02	; 2
+    1454:	39 f1       	breq	.+78     	; 0x14a4 <DIO_InitPin+0x1b2>
+    1456:	93 30       	cpi	r25, 0x03	; 3
+    1458:	b9 f1       	breq	.+110    	; 0x14c8 <DIO_InitPin+0x1d6>
+    145a:	08 95       	ret
+    145c:	4a b3       	in	r20, 0x1a	; 26
+    145e:	21 e0       	ldi	r18, 0x01	; 1
+    1460:	30 e0       	ldi	r19, 0x00	; 0
+    1462:	b9 01       	movw	r22, r18
+    1464:	02 c0       	rjmp	.+4      	; 0x146a <DIO_InitPin+0x178>
+    1466:	66 0f       	add	r22, r22
+    1468:	77 1f       	adc	r23, r23
+    146a:	8a 95       	dec	r24
+    146c:	e2 f7       	brpl	.-8      	; 0x1466 <DIO_InitPin+0x174>
+    146e:	cb 01       	movw	r24, r22
+    1470:	96 2f       	mov	r25, r22
+    1472:	90 95       	com	r25
+    1474:	94 23       	and	r25, r20
+    1476:	9a bb       	out	0x1a, r25	; 26
+    1478:	9b b3       	in	r25, 0x1b	; 27
+    147a:	89 2b       	or	r24, r25
+    147c:	8b bb       	out	0x1b, r24	; 27
+    147e:	08 95       	ret
+    1480:	47 b3       	in	r20, 0x17	; 23
+    1482:	21 e0       	ldi	r18, 0x01	; 1
+    1484:	30 e0       	ldi	r19, 0x00	; 0
+    1486:	b9 01       	movw	r22, r18
+    1488:	02 c0       	rjmp	.+4      	; 0x148e <DIO_InitPin+0x19c>
+    148a:	66 0f       	add	r22, r22
+    148c:	77 1f       	adc	r23, r23
+    148e:	8a 95       	dec	r24
+    1490:	e2 f7       	brpl	.-8      	; 0x148a <DIO_InitPin+0x198>
+    1492:	cb 01       	movw	r24, r22
+    1494:	96 2f       	mov	r25, r22
+    1496:	90 95       	com	r25
+    1498:	94 23       	and	r25, r20
+    149a:	97 bb       	out	0x17, r25	; 23
+    149c:	98 b3       	in	r25, 0x18	; 24
+    149e:	89 2b       	or	r24, r25
+    14a0:	88 bb       	out	0x18, r24	; 24
+    14a2:	08 95       	ret
+    14a4:	44 b3       	in	r20, 0x14	; 20
+    14a6:	21 e0       	ldi	r18, 0x01	; 1
+    14a8:	30 e0       	ldi	r19, 0x00	; 0
+    14aa:	b9 01       	movw	r22, r18
+    14ac:	02 c0       	rjmp	.+4      	; 0x14b2 <DIO_InitPin+0x1c0>
+    14ae:	66 0f       	add	r22, r22
+    14b0:	77 1f       	adc	r23, r23
+    14b2:	8a 95       	dec	r24
+    14b4:	e2 f7       	brpl	.-8      	; 0x14ae <DIO_InitPin+0x1bc>
+    14b6:	cb 01       	movw	r24, r22
+    14b8:	96 2f       	mov	r25, r22
+    14ba:	90 95       	com	r25
+    14bc:	94 23       	and	r25, r20
+    14be:	94 bb       	out	0x14, r25	; 20
+    14c0:	95 b3       	in	r25, 0x15	; 21
+    14c2:	89 2b       	or	r24, r25
+    14c4:	85 bb       	out	0x15, r24	; 21
+    14c6:	08 95       	ret
+    14c8:	41 b3       	in	r20, 0x11	; 17
+    14ca:	21 e0       	ldi	r18, 0x01	; 1
+    14cc:	30 e0       	ldi	r19, 0x00	; 0
+    14ce:	b9 01       	movw	r22, r18
+    14d0:	02 c0       	rjmp	.+4      	; 0x14d6 <DIO_InitPin+0x1e4>
+    14d2:	66 0f       	add	r22, r22
+    14d4:	77 1f       	adc	r23, r23
+    14d6:	8a 95       	dec	r24
+    14d8:	e2 f7       	brpl	.-8      	; 0x14d2 <DIO_InitPin+0x1e0>
+    14da:	cb 01       	movw	r24, r22
+    14dc:	96 2f       	mov	r25, r22
+    14de:	90 95       	com	r25
+    14e0:	94 23       	and	r25, r20
+    14e2:	91 bb       	out	0x11, r25	; 17
+    14e4:	92 b3       	in	r25, 0x12	; 18
+    14e6:	89 2b       	or	r24, r25
+    14e8:	82 bb       	out	0x12, r24	; 18
+    14ea:	08 95       	ret
+
+000014ec <DIO_WritePin>:
+    14ec:	98 2f       	mov	r25, r24
+    14ee:	96 95       	lsr	r25
+    14f0:	96 95       	lsr	r25
+    14f2:	96 95       	lsr	r25
+    14f4:	87 70       	andi	r24, 0x07	; 7
+    14f6:	61 30       	cpi	r22, 0x01	; 1
+    14f8:	e1 f5       	brne	.+120    	; 0x1572 <DIO_WritePin+0x86>
+    14fa:	91 30       	cpi	r25, 0x01	; 1
+    14fc:	99 f0       	breq	.+38     	; 0x1524 <DIO_WritePin+0x38>
+    14fe:	28 f0       	brcs	.+10     	; 0x150a <DIO_WritePin+0x1e>
+    1500:	92 30       	cpi	r25, 0x02	; 2
+    1502:	e9 f0       	breq	.+58     	; 0x153e <DIO_WritePin+0x52>
+    1504:	93 30       	cpi	r25, 0x03	; 3
+    1506:	41 f1       	breq	.+80     	; 0x1558 <DIO_WritePin+0x6c>
+    1508:	08 95       	ret
+    150a:	4b b3       	in	r20, 0x1b	; 27
+    150c:	21 e0       	ldi	r18, 0x01	; 1
+    150e:	30 e0       	ldi	r19, 0x00	; 0
+    1510:	b9 01       	movw	r22, r18
+    1512:	02 c0       	rjmp	.+4      	; 0x1518 <DIO_WritePin+0x2c>
+    1514:	66 0f       	add	r22, r22
+    1516:	77 1f       	adc	r23, r23
+    1518:	8a 95       	dec	r24
+    151a:	e2 f7       	brpl	.-8      	; 0x1514 <DIO_WritePin+0x28>
+    151c:	cb 01       	movw	r24, r22
+    151e:	84 2b       	or	r24, r20
+    1520:	8b bb       	out	0x1b, r24	; 27
+    1522:	08 95       	ret
+    1524:	48 b3       	in	r20, 0x18	; 24
+    1526:	21 e0       	ldi	r18, 0x01	; 1
+    1528:	30 e0       	ldi	r19, 0x00	; 0
+    152a:	b9 01       	movw	r22, r18
+    152c:	02 c0       	rjmp	.+4      	; 0x1532 <DIO_WritePin+0x46>
+    152e:	66 0f       	add	r22, r22
+    1530:	77 1f       	adc	r23, r23
+    1532:	8a 95       	dec	r24
+    1534:	e2 f7       	brpl	.-8      	; 0x152e <DIO_WritePin+0x42>
+    1536:	cb 01       	movw	r24, r22
+    1538:	84 2b       	or	r24, r20
+    153a:	88 bb       	out	0x18, r24	; 24
+    153c:	08 95       	ret
+    153e:	45 b3       	in	r20, 0x15	; 21
+    1540:	21 e0       	ldi	r18, 0x01	; 1
+    1542:	30 e0       	ldi	r19, 0x00	; 0
+    1544:	b9 01       	movw	r22, r18
+    1546:	02 c0       	rjmp	.+4      	; 0x154c <DIO_WritePin+0x60>
+    1548:	66 0f       	add	r22, r22
+    154a:	77 1f       	adc	r23, r23
+    154c:	8a 95       	dec	r24
+    154e:	e2 f7       	brpl	.-8      	; 0x1548 <DIO_WritePin+0x5c>
+    1550:	cb 01       	movw	r24, r22
+    1552:	84 2b       	or	r24, r20
+    1554:	85 bb       	out	0x15, r24	; 21
+    1556:	08 95       	ret
+    1558:	42 b3       	in	r20, 0x12	; 18
+    155a:	21 e0       	ldi	r18, 0x01	; 1
+    155c:	30 e0       	ldi	r19, 0x00	; 0
+    155e:	b9 01       	movw	r22, r18
+    1560:	02 c0       	rjmp	.+4      	; 0x1566 <DIO_WritePin+0x7a>
+    1562:	66 0f       	add	r22, r22
+    1564:	77 1f       	adc	r23, r23
+    1566:	8a 95       	dec	r24
+    1568:	e2 f7       	brpl	.-8      	; 0x1562 <DIO_WritePin+0x76>
+    156a:	cb 01       	movw	r24, r22
+    156c:	84 2b       	or	r24, r20
+    156e:	82 bb       	out	0x12, r24	; 18
+    1570:	08 95       	ret
+    1572:	61 11       	cpse	r22, r1
+    1574:	3f c0       	rjmp	.+126    	; 0x15f4 <DIO_WritePin+0x108>
+    1576:	91 30       	cpi	r25, 0x01	; 1
+    1578:	a1 f0       	breq	.+40     	; 0x15a2 <DIO_WritePin+0xb6>
+    157a:	28 f0       	brcs	.+10     	; 0x1586 <DIO_WritePin+0x9a>
+    157c:	92 30       	cpi	r25, 0x02	; 2
+    157e:	f9 f0       	breq	.+62     	; 0x15be <DIO_WritePin+0xd2>
+    1580:	93 30       	cpi	r25, 0x03	; 3
+    1582:	59 f1       	breq	.+86     	; 0x15da <DIO_WritePin+0xee>
+    1584:	08 95       	ret
+    1586:	4b b3       	in	r20, 0x1b	; 27
+    1588:	21 e0       	ldi	r18, 0x01	; 1
+    158a:	30 e0       	ldi	r19, 0x00	; 0
+    158c:	b9 01       	movw	r22, r18
+    158e:	02 c0       	rjmp	.+4      	; 0x1594 <DIO_WritePin+0xa8>
+    1590:	66 0f       	add	r22, r22
+    1592:	77 1f       	adc	r23, r23
+    1594:	8a 95       	dec	r24
+    1596:	e2 f7       	brpl	.-8      	; 0x1590 <DIO_WritePin+0xa4>
+    1598:	cb 01       	movw	r24, r22
+    159a:	80 95       	com	r24
+    159c:	84 23       	and	r24, r20
+    159e:	8b bb       	out	0x1b, r24	; 27
+    15a0:	08 95       	ret
+    15a2:	48 b3       	in	r20, 0x18	; 24
+    15a4:	21 e0       	ldi	r18, 0x01	; 1
+    15a6:	30 e0       	ldi	r19, 0x00	; 0
+    15a8:	b9 01       	movw	r22, r18
+    15aa:	02 c0       	rjmp	.+4      	; 0x15b0 <DIO_WritePin+0xc4>
+    15ac:	66 0f       	add	r22, r22
+    15ae:	77 1f       	adc	r23, r23
+    15b0:	8a 95       	dec	r24
+    15b2:	e2 f7       	brpl	.-8      	; 0x15ac <DIO_WritePin+0xc0>
+    15b4:	cb 01       	movw	r24, r22
+    15b6:	80 95       	com	r24
+    15b8:	84 23       	and	r24, r20
+    15ba:	88 bb       	out	0x18, r24	; 24
+    15bc:	08 95       	ret
+    15be:	45 b3       	in	r20, 0x15	; 21
+    15c0:	21 e0       	ldi	r18, 0x01	; 1
+    15c2:	30 e0       	ldi	r19, 0x00	; 0
+    15c4:	b9 01       	movw	r22, r18
+    15c6:	02 c0       	rjmp	.+4      	; 0x15cc <DIO_WritePin+0xe0>
+    15c8:	66 0f       	add	r22, r22
+    15ca:	77 1f       	adc	r23, r23
+    15cc:	8a 95       	dec	r24
+    15ce:	e2 f7       	brpl	.-8      	; 0x15c8 <DIO_WritePin+0xdc>
+    15d0:	cb 01       	movw	r24, r22
+    15d2:	80 95       	com	r24
+    15d4:	84 23       	and	r24, r20
+    15d6:	85 bb       	out	0x15, r24	; 21
+    15d8:	08 95       	ret
+    15da:	42 b3       	in	r20, 0x12	; 18
+    15dc:	21 e0       	ldi	r18, 0x01	; 1
+    15de:	30 e0       	ldi	r19, 0x00	; 0
+    15e0:	b9 01       	movw	r22, r18
+    15e2:	02 c0       	rjmp	.+4      	; 0x15e8 <DIO_WritePin+0xfc>
+    15e4:	66 0f       	add	r22, r22
+    15e6:	77 1f       	adc	r23, r23
+    15e8:	8a 95       	dec	r24
+    15ea:	e2 f7       	brpl	.-8      	; 0x15e4 <DIO_WritePin+0xf8>
+    15ec:	cb 01       	movw	r24, r22
+    15ee:	80 95       	com	r24
+    15f0:	84 23       	and	r24, r20
+    15f2:	82 bb       	out	0x12, r24	; 18
+    15f4:	08 95       	ret
+
+000015f6 <DIO_Init>:
+    15f6:	cf 93       	push	r28
+    15f8:	c0 e0       	ldi	r28, 0x00	; 0
+    15fa:	09 c0       	rjmp	.+18     	; 0x160e <DIO_Init+0x18>
+    15fc:	ec 2f       	mov	r30, r28
+    15fe:	f0 e0       	ldi	r31, 0x00	; 0
+    1600:	ee 52       	subi	r30, 0x2E	; 46
+    1602:	ff 4f       	sbci	r31, 0xFF	; 255
+    1604:	60 81       	ld	r22, Z
+    1606:	8c 2f       	mov	r24, r28
+    1608:	0e 94 79 09 	call	0x12f2	; 0x12f2 <DIO_InitPin>
+    160c:	cf 5f       	subi	r28, 0xFF	; 255
+    160e:	c0 32       	cpi	r28, 0x20	; 32
+    1610:	a8 f3       	brcs	.-22     	; 0x15fc <DIO_Init+0x6>
+    1612:	cf 91       	pop	r28
+    1614:	08 95       	ret
+
+00001616 <DIO_ReadPin>:
+// To read the status of any Pin in any Port
+ DIO_PinVoltage_type DIO_ReadPin(DIO_Pin_type pin )
+ {
+	 
+	      //To calculate the number of PORT
+           DOI_Port_type port = pin / 8;
+    1616:	98 2f       	mov	r25, r24
+    1618:	96 95       	lsr	r25
+    161a:	96 95       	lsr	r25
+    161c:	96 95       	lsr	r25
+	 
+	      //To calculate the number of PIN
+           u8 pin_num = pin % 8;
+    161e:	48 2f       	mov	r20, r24
+    1620:	47 70       	andi	r20, 0x07	; 7
+		   
+		  //local variable to return the value of volt on a pin 
+	     DIO_PinVoltage_type  volt = LOW;
+		 
+	 switch(port)
+    1622:	91 30       	cpi	r25, 0x01	; 1
+    1624:	81 f0       	breq	.+32     	; 0x1646 <DIO_ReadPin+0x30>
+    1626:	28 f0       	brcs	.+10     	; 0x1632 <DIO_ReadPin+0x1c>
+    1628:	92 30       	cpi	r25, 0x02	; 2
+    162a:	b9 f0       	breq	.+46     	; 0x165a <DIO_ReadPin+0x44>
+    162c:	93 30       	cpi	r25, 0x03	; 3
+    162e:	f9 f0       	breq	.+62     	; 0x166e <DIO_ReadPin+0x58>
+    1630:	28 c0       	rjmp	.+80     	; 0x1682 <DIO_ReadPin+0x6c>
+	         second check the port of pin 
+	         third Read the status of pin in PIN Register  
+	         **/
+		  
+		 case PA:
+		 volt=READ_BIT(PINA,pin_num);
+    1632:	99 b3       	in	r25, 0x19	; 25
+    1634:	89 2f       	mov	r24, r25
+    1636:	90 e0       	ldi	r25, 0x00	; 0
+    1638:	02 c0       	rjmp	.+4      	; 0x163e <DIO_ReadPin+0x28>
+    163a:	95 95       	asr	r25
+    163c:	87 95       	ror	r24
+    163e:	4a 95       	dec	r20
+    1640:	e2 f7       	brpl	.-8      	; 0x163a <DIO_ReadPin+0x24>
+    1642:	81 70       	andi	r24, 0x01	; 1
+		 break;
+    1644:	08 95       	ret
+		 case PB:
+		 
+		 volt=READ_BIT(PINB,pin_num);
+    1646:	26 b3       	in	r18, 0x16	; 22
+    1648:	30 e0       	ldi	r19, 0x00	; 0
+    164a:	c9 01       	movw	r24, r18
+    164c:	02 c0       	rjmp	.+4      	; 0x1652 <DIO_ReadPin+0x3c>
+    164e:	95 95       	asr	r25
+    1650:	87 95       	ror	r24
+    1652:	4a 95       	dec	r20
+    1654:	e2 f7       	brpl	.-8      	; 0x164e <DIO_ReadPin+0x38>
+    1656:	81 70       	andi	r24, 0x01	; 1
+		 break;
+    1658:	08 95       	ret
+		 case PC:
+		 
+		 volt=READ_BIT(PINC,pin_num);
+    165a:	23 b3       	in	r18, 0x13	; 19
+    165c:	30 e0       	ldi	r19, 0x00	; 0
+    165e:	c9 01       	movw	r24, r18
+    1660:	02 c0       	rjmp	.+4      	; 0x1666 <DIO_ReadPin+0x50>
+    1662:	95 95       	asr	r25
+    1664:	87 95       	ror	r24
+    1666:	4a 95       	dec	r20
+    1668:	e2 f7       	brpl	.-8      	; 0x1662 <DIO_ReadPin+0x4c>
+    166a:	81 70       	andi	r24, 0x01	; 1
+		 break;
+    166c:	08 95       	ret
+		 case PD:
+		 
+		 volt=READ_BIT(PIND,pin_num);
+    166e:	20 b3       	in	r18, 0x10	; 16
+    1670:	30 e0       	ldi	r19, 0x00	; 0
+    1672:	c9 01       	movw	r24, r18
+    1674:	02 c0       	rjmp	.+4      	; 0x167a <DIO_ReadPin+0x64>
+    1676:	95 95       	asr	r25
+    1678:	87 95       	ror	r24
+    167a:	4a 95       	dec	r20
+    167c:	e2 f7       	brpl	.-8      	; 0x1676 <DIO_ReadPin+0x60>
+    167e:	81 70       	andi	r24, 0x01	; 1
+		 break;
+    1680:	08 95       	ret
+	 
+	      //To calculate the number of PIN
+           u8 pin_num = pin % 8;
+		   
+		  //local variable to return the value of volt on a pin 
+	     DIO_PinVoltage_type  volt = LOW;
+    1682:	80 e0       	ldi	r24, 0x00	; 0
+		 
+		 volt=READ_BIT(PIND,pin_num);
+		 break;
+	 }
+	 return volt;
+ }
+    1684:	08 95       	ret
+
+00001686 <__divmodsi4>:
+    1686:	05 2e       	mov	r0, r21
+    1688:	97 fb       	bst	r25, 7
+    168a:	1e f4       	brtc	.+6      	; 0x1692 <__divmodsi4+0xc>
+    168c:	00 94       	com	r0
+    168e:	0e 94 5a 0b 	call	0x16b4	; 0x16b4 <__negsi2>
+    1692:	57 fd       	sbrc	r21, 7
+    1694:	07 d0       	rcall	.+14     	; 0x16a4 <__divmodsi4_neg2>
+    1696:	0e 94 62 0b 	call	0x16c4	; 0x16c4 <__udivmodsi4>
+    169a:	07 fc       	sbrc	r0, 7
+    169c:	03 d0       	rcall	.+6      	; 0x16a4 <__divmodsi4_neg2>
+    169e:	4e f4       	brtc	.+18     	; 0x16b2 <__divmodsi4_exit>
+    16a0:	0c 94 5a 0b 	jmp	0x16b4	; 0x16b4 <__negsi2>
+
+000016a4 <__divmodsi4_neg2>:
+    16a4:	50 95       	com	r21
+    16a6:	40 95       	com	r20
+    16a8:	30 95       	com	r19
+    16aa:	21 95       	neg	r18
+    16ac:	3f 4f       	sbci	r19, 0xFF	; 255
+    16ae:	4f 4f       	sbci	r20, 0xFF	; 255
+    16b0:	5f 4f       	sbci	r21, 0xFF	; 255
+
+000016b2 <__divmodsi4_exit>:
+    16b2:	08 95       	ret
+
+000016b4 <__negsi2>:
+    16b4:	90 95       	com	r25
+    16b6:	80 95       	com	r24
+    16b8:	70 95       	com	r23
+    16ba:	61 95       	neg	r22
+    16bc:	7f 4f       	sbci	r23, 0xFF	; 255
+    16be:	8f 4f       	sbci	r24, 0xFF	; 255
+    16c0:	9f 4f       	sbci	r25, 0xFF	; 255
+    16c2:	08 95       	ret
+
+000016c4 <__udivmodsi4>:
+    16c4:	a1 e2       	ldi	r26, 0x21	; 33
+    16c6:	1a 2e       	mov	r1, r26
+    16c8:	aa 1b       	sub	r26, r26
+    16ca:	bb 1b       	sub	r27, r27
+    16cc:	fd 01       	movw	r30, r26
+    16ce:	0d c0       	rjmp	.+26     	; 0x16ea <__udivmodsi4_ep>
+
+000016d0 <__udivmodsi4_loop>:
+    16d0:	aa 1f       	adc	r26, r26
+    16d2:	bb 1f       	adc	r27, r27
+    16d4:	ee 1f       	adc	r30, r30
+    16d6:	ff 1f       	adc	r31, r31
+    16d8:	a2 17       	cp	r26, r18
+    16da:	b3 07       	cpc	r27, r19
+    16dc:	e4 07       	cpc	r30, r20
+    16de:	f5 07       	cpc	r31, r21
+    16e0:	20 f0       	brcs	.+8      	; 0x16ea <__udivmodsi4_ep>
+    16e2:	a2 1b       	sub	r26, r18
+    16e4:	b3 0b       	sbc	r27, r19
+    16e6:	e4 0b       	sbc	r30, r20
+    16e8:	f5 0b       	sbc	r31, r21
+
+000016ea <__udivmodsi4_ep>:
+    16ea:	66 1f       	adc	r22, r22
+    16ec:	77 1f       	adc	r23, r23
+    16ee:	88 1f       	adc	r24, r24
+    16f0:	99 1f       	adc	r25, r25
+    16f2:	1a 94       	dec	r1
+    16f4:	69 f7       	brne	.-38     	; 0x16d0 <__udivmodsi4_loop>
+    16f6:	60 95       	com	r22
+    16f8:	70 95       	com	r23
+    16fa:	80 95       	com	r24
+    16fc:	90 95       	com	r25
+    16fe:	9b 01       	movw	r18, r22
+    1700:	ac 01       	movw	r20, r24
+    1702:	bd 01       	movw	r22, r26
+    1704:	cf 01       	movw	r24, r30
+    1706:	08 95       	ret
+
+00001708 <_exit>:
+    1708:	f8 94       	cli
+
+0000170a <__stop_program>:
+    170a:	ff cf       	rjmp	.-2      	; 0x170a <__stop_program>
